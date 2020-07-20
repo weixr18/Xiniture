@@ -1,0 +1,1477 @@
+[
+    {
+        "comment": "general introduction",
+        "type": "introduction",
+        "id": 0,
+        "title": "Introduction of Xinjiang",
+        "description": "Xinjiang, officially the Xinjiang Uyghur Autonomous Region[8] (XUAR), is an autonomous region of the People's Republic of China, located in the northwest of the country. Being the largest province-level division of China and the 8th largest country subdivision in the world, Xinjiang spans over 1.6 million km2 (640,000 square miles).[1] The Aksai Chin region, administered by China mostly as part of Xinjiang's Hotan Prefecture, is claimed by India. Xinjiang borders the countries of Mongolia (Bayan-Ölgii, Khovd and Govi-Altai Provinces), Russia (Altai Republic), Kazakhstan (East Kazakhstan and Almaty Provinces), Kyrgyzstan (Issyk Kul, Naryn and Osh Regions), Tajikistan (Gorno-Badakhshan Autonomous Region), and Afghanistan (Badakhshan). The rugged Karakoram, Kunlun and Tian Shan mountain ranges occupy much of Xinjiang's borders, as well as its western and southern regions. Xinjiang also borders the Tibet Autonomous Region and the provinces of Gansu and Qinghai. The most well-known route of the historical Silk Road ran through the territory from the east to its northwestern border. ",
+        "picture": "Map_of_Xinjiang",
+        "date": "1975.01",
+        "fire_only_once": true,
+        "option": [
+            {
+                "text": "Acknowledged",
+                "country_event": {
+                    "type": "introduction",
+                    "id": 1
+                }
+            }
+        ]
+    },
+    {
+        "comment": "introduction of economy",
+        "type": "introduction",
+        "id": 1,
+        "title": "Xinjiang's Economy",
+        "description": "",
+        "picture": "Farm_and_factories",
+        "date": "1975.01",
+        "fire_only_once": true,
+        "option": [
+            {
+                "text": "Acknowledged",
+                "country_event": {
+                    "type": "introduction",
+                    "id": 2
+                }
+            }
+        ]
+    },
+    {
+        "comment": "introduction of culture",
+        "type": "introduction",
+        "id": 2,
+        "title": "Minor Ethnicities and Culture",
+        "description": "",
+        "picture": "Minorities",
+        "date": "1975.01",
+        "fire_only_once": true,
+        "option": [
+            {
+                "text": "Acknowledged",
+                "country_event": {
+                    "type": "introduction",
+                    "id": 3
+                },
+                "effect": []
+            }
+        ]
+    },
+    {
+        "comment": "introduction of separatist",
+        "type": "introduction",
+        "id": 3,
+        "title": "Separatism in Xinjiang",
+        "description": "",
+        "picture": "Separatist",
+        "date": "1975.01",
+        "immediate": {
+            "add_tag": []
+        },
+        "fire_only_once": true,
+        "option": [
+            {
+                "marker": "A",
+                "text": "Smash these separatists!",
+                "effect": []
+            }
+        ]
+    },
+    {
+        "comment": "General Minor Riot",
+        "type": "riot",
+        "id": 0,
+        "title": "",
+        "description": "",
+        "picture": "Riot",
+        "trigger": {
+            "CON": {
+                "compare": "greater",
+                "value": 60
+            },
+            "or": {
+                "ECO": {
+                    "compare": "less",
+                    "value": -50
+                },
+                "MIL": {
+                    "compare": "greater",
+                    "value": 50
+                }
+            },
+            "mean_time_to_happen": 6
+        },
+        "immediate": {
+            "add_tag": [
+                "minor_riot"
+            ]
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "",
+                "comment": "Suppress",
+                "effect": {
+                    "add_tag": [
+                        "minor_riot"
+                    ],
+                    "remove_tag": [],
+                    "property_add": {
+                        "CON": -30
+                    }
+                }
+            },
+            {
+                "marker": "B",
+                "text": "",
+                "comment": "No Suppress",
+                "effect": {
+                    "add_tag": [],
+                    "remove_tag": [],
+                    "property_add": {
+                        "CON": 10,
+                        "MIL": 5
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "comment": "General Major Riot",
+        "type": "riot",
+        "id": 1,
+        "title": "",
+        "description": "",
+        "picture": "Riot",
+        "trigger": {
+            "CON": {
+                "compare": "greater",
+                "value": 80
+            },
+            "or": {
+                "ECO": {
+                    "compare": "less",
+                    "value": -75
+                },
+                "MIL": {
+                    "compare": "greater",
+                    "value": 75
+                },
+                "has_tag": "minor_riot"
+            },
+            "mean_time_to_happen": 4
+        },
+        "immediate": {
+            "add_tag": [
+                "major_riot"
+            ]
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "",
+                "comment": "Suppress",
+                "effect": {
+                    "add_tag": [
+                        "major_riot"
+                    ],
+                    "remove_tag": [],
+                    "property_add": {
+                        "CON": -30
+                    }
+                }
+            },
+            {
+                "marker": "B",
+                "text": "",
+                "comment": "Mild Suppress",
+                "effect": {
+                    "add_tag": [
+                        "minor_riot"
+                    ],
+                    "remove_tag": [],
+                    "property_add": {
+                        "CON": -30
+                    }
+                }
+            },
+            {
+                "marker": "C",
+                "text": "",
+                "comment": "No Suppress",
+                "effect": {
+                    "add_tag": [],
+                    "remove_tag": [],
+                    "property_add": {
+                        "CON": 15,
+                        "MIL": 10
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "comment": "dissolve of bingtuan?",
+        "type": "SIK",
+        "id": 0,
+        "title": "Dissolution of Bingtuan?",
+        "description": "Even Bingtuan is mostly self-sufficient on economy, the poor nature conditions in Xinjiang prevents Bingtuan to produce more. Now that the state of economy is not looking good all over the country, some argues for the dissolution of Bingtuan so its members can join the development of more prosprous areas at a higher efficiency.",
+        "picture": "File_on_desk",
+        "fire_only_once": true,
+        "date": "1975.03",
+        "immediate": {
+            "add_tag": []
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "Finally we get rid of the economical burden!",
+                "comment": "dissolve",
+                "effect": {
+                    "add_tag": [
+                        "Bingtuan_Dissolved"
+                    ],
+                    "remove_tag": [],
+                    "property_add": {
+                        "MIL": 5,
+                        "ECO": 15,
+                        "CON": 5
+                    },
+                    "country_event": {
+                        "type": "SIK",
+                        "id": 1
+                    }
+                }
+            },
+            {
+                "marker": "B",
+                "text": "Better to keep it in place.",
+                "comment": "keep",
+                "effect": {
+                    "add_tag": [],
+                    "remove_tag": [],
+                    "property_add": {
+                        "MIL": -10,
+                        "ECO": -10,
+                        "CON": -5
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "comment": "Han people going to the East",
+        "type": "SIK",
+        "id": 1,
+        "title": "Bingtuan members returning to the east",
+        "description": "After the dissolution of Bingtuan, those members who came from cities such as Shanghai when Bingtuan was first founded have now returned to their home. This causes a sharp decrease of educated workers and Han ethnics in Xinjiang.",
+        "picture": "Transportaion_Nexus",
+        "fire_only_once": true,
+        "date": "1975.03",
+        "trigger": {
+            "has_tag": "Bingtuan_Dissolved"
+        },
+        "immediate": {
+            "add_tag": []
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "Bon Voyage!",
+                "comment": "",
+                "effect": {
+                    "remove_tag": [],
+                    "property_add": {
+                        "ECO": -5,
+                        "MIL": 10
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "comment": "Restoration of bingtuan",
+        "type": "SIK",
+        "id": 2,
+        "title": "Restoration of Bingtuan?",
+        "description": "Recent unrest and border tensions brings a voice calling for the restoration of Bingtuan rise to surface in Beijing. Most agree it is the best way to keep possible subversive activities at bay, while the size and urgency of the restoration is not yet decided. Still there are some others claiming it would only be another ineffective economical burden.",
+        "picture": "File_on_desk",
+        "fire_only_once": false,
+        "date": "",
+        "trigger": {
+            "has_tag": "Bingtuan_Dissolved",
+            "or": {
+                "CON": {
+                    "compare": "greater",
+                    "value": 50
+                },
+                "MIL": {
+                    "compare": "greater",
+                    "value": 50
+                },
+                "date": {
+                    "compare": "greater",
+                    "value": "1981.12"
+                }
+            },
+            "mean_time_to_happen": 2
+        },
+        "immediate": {
+            "add_tag": []
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "Bring it back in full scale immediately!",
+                "comment": "Full restore",
+                "effect": {
+                    "remove_tag": [
+                        "Bingtuan_Dissolved"
+                    ],
+                    "property_add": {
+                        "ECO": -10,
+                        "MIL": -20
+                    },
+                    "add_tag": "New_Population"
+                }
+            },
+            {
+                "marker": "B",
+                "text": "Only set up a framework, we can fill it up later.",
+                "comment": "Partial restore",
+                "effect": {
+                    "remove_tag": [
+                        "Bingtuan_Dissolved"
+                    ],
+                    "property_add": {
+                        "ECO": -5,
+                        "MIL": -10
+                    }
+                }
+            },
+            {
+                "marker": "C",
+                "text": "Better not to do it.",
+                "comment": "No restore",
+                "effect": {
+                    "remove_tag": [],
+                    "property_add": {
+                        "ECO": 5,
+                        "MIL": 5
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "comment": "New Population of bingtuan",
+        "type": "SIK",
+        "id": 3,
+        "title": "New Bingtuan members needed",
+        "description": "Since the restoration of Bingtuan has begun, we have to find men willing to fight harsh climate and contribute to local development. The question is, where should we focus on recruiting new members?",
+        "picture": "Minorities",
+        "fire_only_once": false,
+        "date": "",
+        "trigger": {
+            "has_tag": "New_Population"
+        },
+        "immediate": {
+            "add_tag": []
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "We can bring some people from eastern China.",
+                "comment": "Han from East",
+                "effect": {
+                    "remove_tag": [
+                        "New_Population"
+                    ],
+                    "property_add": {
+                        "ECO": -5,
+                        "MIL": 15,
+                        "CUL": -5,
+                        "SIN": 1
+                    }
+                }
+            },
+            {
+                "marker": "B",
+                "text": "Why not employ the locals?",
+                "comment": "Locals",
+                "effect": {
+                    "remove_tag": [
+                        "New_Population"
+                    ],
+                    "property_add": {
+                        "ECO": 5,
+                        "CUL": 5
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "comment": "Afghanistan War",
+        "type": "SIK",
+        "id": 4,
+        "title": "Afghanistan War broke out!",
+        "description": "The USSR just attacked Afghanistan! No doubt there will be refugees fleeing to our border, and the extended border with USSR will cause more infiltration.",
+        "picture": "Soldiers",
+        "fire_only_once": true,
+        "date": "",
+        "immediate": {
+            "add_tag": []
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "Strengthen border patrol! We can't let the Soviets infiltrate us.",
+                "comment": "Strengthen border patrol",
+                "effect": {
+                    "remove_tag": [],
+                    "property_add": {
+                        "ECO": -10,
+                        "MIL": -5
+                    }
+                }
+            },
+            {
+                "marker": "B",
+                "text": "Let Afghanistan refugees come.",
+                "comment": "Refugee welcome",
+                "effect": {
+                    "remove_tag": [],
+                    "property_add": {
+                        "CUL": 10,
+                        "MIL": 5,
+                        "CON": 5
+                    }
+                }
+            },
+            {
+                "marker": "C",
+                "text": "There is nothing to worry about.",
+                "comment": "Status quo",
+                "effect": {
+                    "remove_tag": [],
+                    "property_add": {}
+                }
+            }
+        ]
+    },
+    {
+        "comment": "New RMB banknote",
+        "type": "SIK",
+        "id": 5,
+        "title": "New design of RMB notes",
+        "description": "People's Bank of China is preparing for the publish of a new set of RMB banknotes. Traditionally illustrations of workers and farmers will be featured, but all of them is Han people. We can now include some ethnic figures on the banknotes.",
+        "picture": "File_on_desk",
+        "fire_only_once": true,
+        "date": "1987.04",
+        "immediate": {
+            "add_tag": []
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "We can describe different ethnic figures on the banknote.",
+                "comment": "Include ethnic figures",
+                "effect": {
+                    "remove_tag": [],
+                    "property_add": {
+                        "CUL": 15
+                    }
+                }
+            },
+            {
+                "marker": "B",
+                "text": "Only illustrate Han people as previous versions.",
+                "comment": "Only include Han figures",
+                "effect": {
+                    "remove_tag": [],
+                    "property_add": {
+                        "CUL": -10,
+                        "CON": 10
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "comment": "Orthography",
+        "type": "SIK",
+        "id": 6,
+        "title": "Orthography of Uyghur language",
+        "description": "Uyghur language had been written in several forms. Now is the time to consider orthography of Uyghur language, so our pulications, education and media can teach and use the orthography.",
+        "picture": "File_on_desk",
+        "fire_only_once": true,
+        "date": "1976.08",
+        "immediate": {
+            "add_tag": []
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "Follow the Soviet lead! Use the Cyrillic alphabet",
+                "comment": "",
+                "effect": {
+                    "add_tag": [
+                        "Cyrillic_Alphabet"
+                    ],
+                    "remove_tag": [],
+                    "property_add": {
+                        "CUL": 15,
+                        "CON": -5,
+                        "MIL": 15,
+                        "ECO": 5
+                    }
+                }
+            },
+            {
+                "marker": "B",
+                "text": "Stay in line with traditions. Use the Arabic alphabet",
+                "comment": "",
+                "effect": {
+                    "add_tag": [
+                        "Arabic_Alphabet"
+                    ],
+                    "remove_tag": [],
+                    "property_add": {
+                        "CUL": 15,
+                        "CON": -5,
+                        "MIL": 15,
+                        "ECO": 5
+                    }
+                }
+            },
+            {
+                "marker": "C",
+                "text": "Why not Latinize it like Chinese Pinyin scheme? Use the Latin alphabet",
+                "comment": "",
+                "effect": {
+                    "add_tag": [
+                        "Latin_Alphabet"
+                    ],
+                    "remove_tag": [],
+                    "property_add": {
+                        "CUL": -10,
+                        "CON": 10,
+                        "MIL": -5,
+                        "ECO": -15
+                    }
+                }
+            },
+            {
+                "marker": "E",
+                "text": "Their is no need for Uyghur orthography, because we can teach them Chinese. Gradually substitute Uyghur with Chinese.",
+                "comment": "",
+                "effect": {
+                    "add_tag": [
+                        "Chinese_Alphabet"
+                    ],
+                    "remove_tag": [],
+                    "property_add": {
+                        "CUL": -20,
+                        "CON": 15,
+                        "MIL": -15,
+                        "ECO": -5,
+                        "SIN": 2
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "comment": "Standardize Uyghur",
+        "type": "SIK",
+        "id": 7,
+        "title": "Standardize Uyghur language",
+        "description": "After the orthography of Uyghur language is completed, we can consider to standardize it as we did to Putonghua. Going for extensive field research will preserve the culture better, but at a higher expense.",
+        "picture": "File_on_desk",
+        "fire_only_once": false,
+        "date": "1977.08",
+        "trigger": {
+            "not_has_tag": "Chinese_Alphabet"
+        },
+        "immediate": {
+            "add_tag": []
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "A language is defined by its speakers. We should include as many dialects as possible.",
+                "comment": "",
+                "effect": {
+                    "remove_tag": [],
+                    "property_add": {
+                        "CUL": 10,
+                        "MIL": 5,
+                        "CON": -5
+                    }
+                }
+            },
+            {
+                "marker": "B",
+                "text": "Incorporating all dialects is ineffective and unnecessary. Use city dialects as source is enough.",
+                "comment": "",
+                "effect": {
+                    "remove_tag": [],
+                    "property_add": {
+                        "ECO": 5,
+                        "CON": 5
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "comment": "Modernize the language: loaned words",
+        "type": "SIK",
+        "id": 8,
+        "title": "Modernizing Uyghur: Loaned words",
+        "description": "Most language have loaned words and it is quite necessary as loaned words can express some concepts better. Some languages loan word from all other languages alike, while other languages have the majority of loaned words loaned from a few languages. When it comes to Uyghur language, what policy shall we chose?",
+        "picture": "File_on_desk",
+        "fire_only_once": false,
+        "date": "1978.08",
+        "immediate": {
+            "add_tag": []
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "A live language may loan word from any language.",
+                "comment": "",
+                "effect": {
+                    "remove_tag": [],
+                    "property_add": {
+                        "MIL": 5,
+                        "CON": 10,
+                        "ECO": 5
+                    }
+                }
+            },
+            {
+                "marker": "B",
+                "text": "Better to restrict loaned words to those of Chinese source.",
+                "comment": "",
+                "effect": {
+                    "remove_tag": [],
+                    "property_add": {
+                        "MIL": -5,
+                        "CON": 5,
+                        "SIN": 1
+                    }
+                }
+            },
+            {
+                "marker": "C",
+                "text": "To keep a language pure, no loaned words are allowed.",
+                "comment": "",
+                "effect": {
+                    "remove_tag": [],
+                    "property_add": {
+                        "CUL": 20,
+                        "MIL": 10,
+                        "CON": -5,
+                        "ECO": -20
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "comment": "Monism: identity",
+        "type": "SIK",
+        "id": 9,
+        "title": "An identity for people live in Xinjiang",
+        "description": "We may strengthen the national identity in our media and education for people live in Xinjiang by referring them to \"Chinese Nationals\" as a whole or strengthen ethnic identity by seperating them into different groups such as \"Uyghurs/Tajiks/Huis\". We can be even more radical, claiming all of them are Han, just like \"Hui people are only Han who believe in Muslim\".",
+        "picture": "Minorities",
+        "fire_only_once": false,
+        "date": "1979.08",
+        "immediate": {
+            "add_tag": []
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "We are all Chinese citizens. Strengthen the national identity.",
+                "comment": "",
+                "effect": {
+                    "remove_tag": [],
+                    "property_add": {
+                        "MIL": -10
+                    }
+                }
+            },
+            {
+                "marker": "B",
+                "text": "People belong to their ethnic group. Strengthen the ethnic identity.",
+                "comment": "",
+                "effect": {
+                    "remove_tag": [],
+                    "property_add": {
+                        "CUL": 10
+                    }
+                }
+            },
+            {
+                "marker": "C",
+                "text": "There are no such things as ethnic group in China, only Han with different traditions! Strengthen Han identity.",
+                "comment": "",
+                "effect": {
+                    "remove_tag": [],
+                    "property_add": {
+                        "SIN": 1,
+                        "CUL": -5,
+                        "MIL": -20,
+                        "CON": 10
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "comment": "Monism: Pan-Turkism",
+        "type": "SIK",
+        "id": 10,
+        "title": "Handling Pan-Turkism",
+        "description": "Pan-Turkism is somewhat controversial. The culture in Xinjiang, especially the Uyghur language do have some resemblance with Turk culture. However, Pan-Turkism also is the rally flag of several separatism groups. How should we handle it?",
+        "picture": "Minorities",
+        "fire_only_once": false,
+        "date": "1980.08",
+        "immediate": {
+            "add_tag": []
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "Only recognize the connections between Turk language and Uyghur language.",
+                "comment": "",
+                "effect": {
+                    "remove_tag": [],
+                    "property_add": {
+                        "CUL": -10,
+                        "MIL": -10
+                    }
+                }
+            },
+            {
+                "marker": "B",
+                "comment": "",
+                "text": "Turk culture has much resemblance with the culture in Xinjiang, we can promote it.",
+                "effect": {
+                    "remove_tag": [],
+                    "property_add": {
+                        "CUL": 10,
+                        "MIL": 10
+                    }
+                }
+            },
+            {
+                "marker": "C",
+                "comment": "",
+                "text": " Pan-Turkism is culture infiltration! We need sinicization to combat it.",
+                "effect": {
+                    "remove_tag": [],
+                    "property_add": {
+                        "SIN": 1,
+                        "CUL": -10,
+                        "MIL": -20,
+                        "CON": 15
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "comment": "Monism: education",
+        "type": "SIK",
+        "id": 11,
+        "title": "Education reforms in Xinjiang",
+        "description": "Previously kids are taught in local language in primary schools and only those who have access to higher education recieve Chinese education. Now we have several plans of reform.",
+        "picture": "File_on_desk",
+        "fire_only_once": false,
+        "date": "1981.08",
+        "immediate": {
+            "add_tag": []
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "Chinese should be used as the academic language while other languages will be taught for daily communication.",
+                "comment": "",
+                "effect": {
+                    "remove_tag": [],
+                    "property_add": {
+                        "ECO": 5,
+                        "MIL": -5,
+                        "CUL": -5
+                    }
+                }
+            },
+            {
+                "marker": "B",
+                "text": "We should treat all languages as equals in all fields.",
+                "comment": "",
+                "effect": {
+                    "remove_tag": [],
+                    "property_add": {
+                        "CUL": 20,
+                        "MIL": 15
+                    }
+                }
+            },
+            {
+                "marker": "C",
+                "text": "Teaching different languages will strengthen separatism! All education should be done in Chinese.",
+                "comment": "",
+                "effect": {
+                    "remove_tag": [],
+                    "property_add": {
+                        "SIN": 2,
+                        "MIL": -20,
+                        "CON": 10,
+                        "CUL": -15,
+                        "ECO": 10
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "comment": "Monism: media",
+        "type": "SIK",
+        "id": 12,
+        "title": "State owned media in Xinjiang",
+        "description": "We have several state owned media in Xinjiang. In the past days, their majority audience is Han people, so only Chinese is used. Now more and more locals are enjoying these media, should we created a local language version for them?",
+        "picture": "File_on_desk",
+        "fire_only_once": false,
+        "date": "1982.08",
+        "immediate": {
+            "add_tag": []
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "Both Chinese and local language version should be created and broadcasted.",
+                "comment": "",
+                "effect": {
+                    "remove_tag": [],
+                    "property_add": {
+                        "ECO": -5
+                    }
+                }
+            },
+            {
+                "marker": "B",
+                "text": "Media faces the masses, only the local language version is needed.",
+                "comment": "",
+                "effect": {
+                    "remove_tag": [],
+                    "property_add": {
+                        "CUL": 10,
+                        "ECO": -5,
+                        "MIL": 10
+                    }
+                }
+            },
+            {
+                "marker": "C",
+                "text": "Media is the best way to spread the use of Chinese. Only the Chinese version is enough.",
+                "comment": "",
+                "effect": {
+                    "remove_tag": [],
+                    "property_add": {
+                        "SIN": 1,
+                        "CON": 5,
+                        "CUL": -5,
+                        "ECO": 5
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "comment": "Completion of Karakorum highway",
+        "type": "SIK",
+        "id": 13,
+        "title": "Completion of Karakorum highway",
+        "description": "The completion of Karakorum highway is a milestone for infrastructure construction in Xinjiang. As the saying goes: \"Infrastructure is the gate to prosperity\"",
+        "picture": "Transportaion_Nexus",
+        "fire_only_once": true,
+        "date": "1978.06",
+        "immediate": {
+            "add_tag": []
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "What an accomplishment!",
+                "comment": "",
+                "effect": {
+                    "add_tag": [],
+                    "remove_tag": [],
+                    "property_add": {
+                        "ECO": 10
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "comment": "Opening of Khunjerab pass?",
+        "type": "SIK",
+        "id": 14,
+        "title": "Opening of Khunjerab pass?",
+        "description": "Local officials have motioned to open Khunjerab pass, claiming the local need of cross-border trade is high. However, the threat of infiltration is one of the major concern.",
+        "picture": "Transportaion_Nexus",
+        "fire_only_once": true,
+        "date": "1982.08",
+        "immediate": {
+            "add_tag": []
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "Of course! Opening the pass will encourage economical growth.",
+                "comment": "",
+                "effect": {
+                    "add_tag": [
+                        "Khunjerab_pass"
+                    ],
+                    "remove_tag": [],
+                    "property_add": {
+                        "ECO": 5,
+                        "CON": -5
+                    }
+                }
+            },
+            {
+                "marker": "B",
+                "text": "It will only bring infiltrators and terrorists. Forget it.",
+                "comment": "",
+                "effect": {
+                    "add_tag": [],
+                    "remove_tag": [],
+                    "property_add": {
+                        "MIL": -5
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "comment": "Further Opening of passes?",
+        "type": "SIK",
+        "id": 15,
+        "title": "Further Opening of border passes?",
+        "description": "The Khunjerab pass has been proven successful in many ways. The surge in cross-border trade and the local economy boom encourage more areas applying for further opening of border passes. How should we reply?",
+        "picture": "Transportaion_Nexus",
+        "fire_only_once": false,
+        "date": "",
+        "trigger": {
+            "or": {
+                "date": {
+                    "compare": "greater",
+                    "value": "1987.08"
+                },
+                "has_tag": "Khunjerab_pass"
+            },
+            "mean_time_to_happen": 60
+        },
+        "immediate": {
+            "add_tag": []
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "More opened passes, more trade.",
+                "comment": "",
+                "effect": {
+                    "add_tag": [],
+                    "remove_tag": [],
+                    "property_add": {
+                        "ECO": 10
+                    }
+                }
+            },
+            {
+                "marker": "B",
+                "text": "It will increase our vulnerability. We'd better focus on the ones we already opened.",
+                "comment": "",
+                "effect": {
+                    "add_tag": [],
+                    "remove_tag": [],
+                    "property_add": {
+                        "CON": 5,
+                        "MIL": -5
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "comment": "Discovery of Tarim petroleum",
+        "type": "SIK",
+        "id": 16,
+        "title": "Discovery of Tarim petroleum",
+        "picture": "Farm_and_factories",
+        "description": "We found large deposite of petroleum in Tarim basin! It would be of great importance since the deposite northeastern petroleum fields are running low and demands of petroleum is increasing. Develop is necessary, but when? Poor infrastructure around the basin brings difficulties in development and some say we shall improve infrastructure first.",
+        "fire_only_once": true,
+        "date": "1989.04",
+        "immediate": {
+            "add_tag": []
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "Use improvised roads to cope, we can't afford delays.",
+                "comment": "",
+                "effect": {
+                    "add_tag": [
+                        "Tarim_develop"
+                    ],
+                    "remove_tag": [],
+                    "property_add": {
+                        "ECO": -5
+                    }
+                }
+            },
+            {
+                "marker": "B",
+                "text": "We can wait until local infrastructures are finished.",
+                "comment": "",
+                "effect": {
+                    "add_tag": [],
+                    "remove_tag": [],
+                    "property_add": {
+                        "CON": 10
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "comment": "Delayed development",
+        "type": "SIK",
+        "id": 17,
+        "title": "Infrastructures ready",
+        "description": "The completion of Lanzhou-Xinjiang Railway brings a surge of economical development in Xinjiang. New roads are built all over the province and the transportation capacity has increased sharply.",
+        "picture": "Transportaion_Nexus",
+        "fire_only_once": false,
+        "date": "",
+        "trigger": {
+            "date": {
+                "compare": "equal",
+                "value": "1990.10"
+            },
+            "not": {
+                "has_tag": "Tarim_develop"
+            },
+            "mean_time_to_happen": 6
+        },
+        "immediate": {
+            "add_tag": []
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "Now we can safely develop the petroleum",
+                "comment": "",
+                "effect": {
+                    "add_tag": [
+                        "Tarim_develop"
+                    ],
+                    "remove_tag": [],
+                    "property_add": {
+                        "CON": -5
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "comment": "Completion of Lanzhou-Xinjiang Railway",
+        "type": "SIK",
+        "id": 18,
+        "title": "Completion of Lanzhou-Xinjiang Railway",
+        "description": "Lanzhou-Xinjiang is one of the most important transportation infrastructure in northwestern China. The days of insufficient transportation capacity are no longer our concern.",
+        "picture": "Transportaion_Nexus",
+        "fire_only_once": true,
+        "date": "1990.09",
+        "immediate": {
+            "add_tag": []
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "Railway brings prosperity!",
+                "comment": "",
+                "effect": {
+                    "add_tag": [],
+                    "remove_tag": [],
+                    "property_add": {
+                        "ECO": 10,
+                        "MIL": -5,
+                        "CON": -5
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "comment": "Development of Tarim: workers?",
+        "type": "SIK",
+        "id": 19,
+        "title": "Recruiting workers of Tarim development",
+        "description": "First phases of Tarim development need workers, both well-educated and less-educated alike. Recruiting locals is much cheaper compared to migrating workers from eastern Chinese, but some are afraid of low communication efficiency between locals and technicians will lead to incidents.",
+        "picture": "Minorities",
+        "fire_only_once": false,
+        "date": "",
+        "trigger": {
+            "has_tag": "Tarim_develop",
+            "mean_time_to_happen": 6
+        },
+        "immediate": {
+            "add_tag": []
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "They have learned Chinese well. Why not hire locals on a large scale?",
+                "comment": "",
+                "effect": {
+                    "add_tag": [],
+                    "remove_tag": [
+                        "Tarim_develop"
+                    ],
+                    "property_add": {
+                        "ECO": 10,
+                        "CON": -5
+                    }
+                },
+                "if": {
+                    "or": {
+                        "has_tag": "Chinese_Alphabet",
+                        "SIN": {
+                            "compare": "greater",
+                            "value": 4
+                        }
+                    }
+                }
+            },
+            {
+                "marker": "B",
+                "text": "A mix of locals and easterners will do the job.",
+                "comment": "",
+                "effect": {
+                    "add_tag": [],
+                    "remove_tag": [
+                        "Tarim_develop"
+                    ],
+                    "property_add": {
+                        "ECO": 5
+                    }
+                }
+            },
+            {
+                "marker": "C",
+                "text": "Better leave the job for the experienced workers from the east.",
+                "comment": "",
+                "effect": {
+                    "add_tag": [],
+                    "remove_tag": [
+                        "Tarim_develop"
+                    ],
+                    "property_add": {
+                        "CON": 10
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "comment": "Discovery of Hami petroleum",
+        "type": "SIK",
+        "id": 20,
+        "title": "Discovery of Hami petroleum",
+        "description": "We found large deposite of petroleum in Hami basin! But now the majority of our experts are working on the Tarim construction site. Should we focus on Tarim first or develop both at once?",
+        "picture": "Farm_and_factories",
+        "fire_only_once": false,
+        "date": "1991.02",
+        "immediate": {
+            "add_tag": []
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "Better to focus on Tarim now.",
+                "comment": "",
+                "effect": {
+                    "add_tag": [],
+                    "remove_tag": [],
+                    "property_add": {}
+                }
+            },
+            {
+                "marker": "B",
+                "text": "Divert some experts to Hami.",
+                "comment": "",
+                "effect": {
+                    "add_tag": [
+                        "Hami_develop"
+                    ],
+                    "remove_tag": [],
+                    "property_add": {
+                        "ECO": -10,
+                        "CON": 5
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "comment": "Riot of 1989",
+        "type": "SIK",
+        "id": 21,
+        "title": "Riot",
+        "description": "",
+        "picture": "Riot",
+        "fire_only_once": false,
+        "date": "1989.05",
+        "immediate": {
+            "add_tag": []
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "Crush them with iron fist!",
+                "comment": "",
+                "effect": {
+                    "add_tag": [],
+                    "remove_tag": [
+                        "major_riot"
+                    ],
+                    "property_add": {
+                        "CON": -50
+                    }
+                }
+            },
+            {
+                "marker": "B",
+                "text": "Punish only the violent.",
+                "comment": "",
+                "effect": {
+                    "add_tag": [
+                        "minor_riot"
+                    ],
+                    "remove_tag": [
+                        "major_riot"
+                    ],
+                    "property_add": {
+                        "CON": -30
+                    }
+                }
+            },
+            {
+                "marker": "C",
+                "text": "People has their way to express their discontent.",
+                "comment": "",
+                "effect": {
+                    "add_tag": [],
+                    "remove_tag": [],
+                    "property_add": {
+                        "CON": 15,
+                        "MIL": 10
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "comment": "Riot of 1990",
+        "type": "SIK",
+        "id": 22,
+        "title": "Riot",
+        "description": "",
+        "picture": "Riot",
+        "fire_only_once": false,
+        "date": "1990.04",
+        "immediate": {
+            "add_tag": [
+                "major_riot"
+            ]
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "Crush them with iron fist!",
+                "comment": "",
+                "effect": {
+                    "add_tag": [],
+                    "remove_tag": [
+                        "major_riot"
+                    ],
+                    "property_add": {
+                        "CON": -50
+                    }
+                }
+            },
+            {
+                "marker": "B",
+                "text": "Punish only the violent.",
+                "comment": "",
+                "effect": {
+                    "add_tag": [
+                        "minor_riot"
+                    ],
+                    "remove_tag": [
+                        "major_riot"
+                    ],
+                    "property_add": {
+                        "CON": -30
+                    }
+                }
+            },
+            {
+                "marker": "C",
+                "text": "People has their way to express their discontent.",
+                "comment": "",
+                "effect": {
+                    "add_tag": [],
+                    "remove_tag": [],
+                    "property_add": {
+                        "CON": 15,
+                        "MIL": 10
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "comment": "Visit of HuaGuofeng",
+        "type": "SIK",
+        "id": 23,
+        "title": "Visit of HuaGuofeng",
+        "description": "",
+        "picture": "Transportaion_Nexus",
+        "fire_only_once": false,
+        "date": "1978.09",
+        "immediate": {
+            "add_tag": []
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "Continue",
+                "comment": "",
+                "effect": {
+                    "add_tag": [],
+                    "remove_tag": [],
+                    "property_add": {}
+                }
+            }
+        ]
+    },
+    {
+        "comment": "Visit of DengXiaoPing",
+        "type": "SIK",
+        "id": 24,
+        "title": "Visit of DengXiaoPing",
+        "description": "",
+        "picture": "Transportaion_Nexus",
+        "fire_only_once": false,
+        "date": "1981.08",
+        "immediate": {
+            "add_tag": []
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "Continue",
+                "comment": "",
+                "effect": {
+                    "add_tag": [],
+                    "remove_tag": [],
+                    "property_add": {}
+                }
+            }
+        ]
+    },
+    {
+        "comment": "Visit of HuYaobang",
+        "type": "SIK",
+        "id": 25,
+        "title": "Visit of HuYaobang",
+        "description": "",
+        "picture": "Transportaion_Nexus",
+        "fire_only_once": false,
+        "date": "1983.05",
+        "immediate": {
+            "add_tag": []
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "Continue",
+                "comment": "",
+                "effect": {
+                    "add_tag": [],
+                    "remove_tag": [],
+                    "property_add": {}
+                }
+            }
+        ]
+    },
+    {
+        "comment": "Visit of LiPeng",
+        "type": "SIK",
+        "id": 26,
+        "title": "Visit of LiPeng",
+        "description": "",
+        "picture": "Transportaion_Nexus",
+        "fire_only_once": false,
+        "date": "1989.11",
+        "immediate": {
+            "add_tag": []
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "Continue",
+                "comment": "",
+                "effect": {
+                    "add_tag": [],
+                    "remove_tag": [],
+                    "property_add": {}
+                }
+            }
+        ]
+    },
+    {
+        "comment": "Visit of JiangZemin",
+        "type": "SIK",
+        "id": 27,
+        "picture": "Transportaion_Nexus",
+        "title": "Visit of JiangZemin",
+        "date": "1990.08",
+        "fire_only_once": false,
+        "description": "",
+        "immediate": {
+            "add_tag": []
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "Continue",
+                "comment": "",
+                "effect": {
+                    "add_tag": [],
+                    "remove_tag": [],
+                    "property_add": {}
+                }
+            }
+        ]
+    }
+]

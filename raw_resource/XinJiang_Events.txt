@@ -1,0 +1,821 @@
+//TODO Numerical re-balance
+//TODO Set date for culture related events
+//TODO Set effect for tags
+//TODO Set options for different leaders
+#define  economy ECO //range = (-100,100)
+#define  militancy MIL//range = (-100,100)
+#define  consciousness CON//range = (-100,100)
+#define  culture CUL//range = (-100,100)
+#define  sinicization SIN//range = (0,10)
+
+country_event = {#general introduction
+	id = intro.0
+	title = intro.0.t
+	desc = intro.0.d
+	picture = Map_of_Xinjiang
+	fire_only_once = yes
+	date = 1975.01
+	option = {
+		name = intro.0.a
+		country_event = {
+				id = intro.1
+	}
+}
+
+country_event = {#introduction of economy
+	id = intro.1
+	title = intro.1.t
+	desc = intro.1.d
+	picture = Farm_and_factories
+	fire_only_once = yes
+	date= 1975.01
+	option = {
+		name = intro.1.a
+		country_event = {
+				id = intro.2
+	}
+}
+
+country_event = {#introduction of culture
+	id = intro.2
+	title = intro.2.t
+	desc = intro.2.d
+	picture = Minorities
+	fire_only_once = yes
+	date = 1975.01
+	option = {
+		name = intro.2.a
+		country_event = {
+				id = intro.3
+	}
+}
+
+country_event = {#introduction of separatist
+	id = intro.3
+	title = intro.3.t
+	desc = intro.3.d
+	picture = Separatist
+	fire_only_once = yes
+	date = 1975.01
+	option = {
+		name = intro.3.a
+
+	}
+}
+
+country_event = {#General Minor Riot
+	id = riot.0
+	title = riot.0
+	desc = riot.0
+	picture = Riot
+	trigger = {
+		CON > 60
+		OR = {
+			ECO < -50
+			MIL > 50
+		}
+		mean_time_to_happen = 6
+	}
+	immediate = {
+		add_tag = minor_riot
+	}
+	option = {#Suppress
+		name = riot.0.a
+		immediate = {
+			remove_tag = minor_riot
+			add_CON = -30
+		}
+	}
+	option = {#No Suppress
+		name = riot.0.b
+		immediate = {
+			add_CON = 10
+			add_MIL = 5
+		}
+	}
+}
+
+country_event = {#General Major Riot
+	id = riot.1
+	title = riot.1
+	desc = riot.1
+	picture = Riot
+	trigger = {
+		CON > 80
+		OR = {
+			has_tag = minor_riot
+			ECO < -75
+			MIL > 75
+		}
+		mean_time_to_happen = 4
+	}
+	immediate = {
+		add_tag = major_riot
+	}
+	option = {#Suppress
+		name = riot.1.a
+		immediate = {
+			remove_tag = major_riot
+			add_CON = -50
+		}
+	}
+	option = {#Mild Suppress
+		name = riot.1.b
+		immediate = {
+			remove_tag = major_riot
+			add_tag = minor_riot
+			add_CON = -30
+		}
+	}
+	option = {#No Suppress
+		name = riot.1.c
+		immediate = {
+			add_CON = 15
+			add_MIL = 10
+		}
+	}
+}
+
+
+country_event = {#dissolve of bingtuan?
+	id = SIK.0
+	title = SIK.0.t
+	desc = SIK.0.d
+	picture = File_on_desk
+	fire_only_once = yes
+	date = 1975.03
+	option = {#dissolve
+		name = SIK.0.a
+		immediate = {
+			add_tag = Bingtuan_Dissolved
+			add_MIL = 5
+			add_ECO = 15
+			add_CON = 5
+		}
+		country_event = {
+				id = SIK.1
+		}
+	}
+	option = {#keep
+		name = SIK.0.b
+		immediate = {
+			add_MIL = -10
+			add_ECO = -10
+			add_CON = -5
+		}
+	}
+}
+
+country_event = {#Han people going to the East
+	id = SIK.1
+	title = SIK.1.t
+	desc = SIK.1.d
+	picture = Transportaion_Nexus
+	fire_only_once = yes
+	date = 1975.03
+	option = {
+		name = SIK.1.a
+		immediate = {
+			add_MIL = 10
+			add_ECO = -5
+		}
+	}
+}
+
+country_event = {#Restoration of bingtuan
+	id = SIK.2
+	title = SIK.2.t
+	desc = SIK.2.d
+	picture = File_on_desk
+	trigger = {
+		has_tag = Bingtuan_Dissolved
+		OR = {
+			CON > 50
+			MIL > 50
+			date > 1981.12
+		}
+		mean_time_to_happen = 2
+	}
+	option = {#Full restore
+		name = SIK.2.a
+		immediate = {
+			remove_tag = Bingtuan_Dissolved
+			add_ECO = -10
+			add_MIL = -20
+			add_tag = New_Population
+		}
+	}
+	option = {#Partial restore
+		name = SIK.2.b
+		immediate = {
+			remove_tag = Bingtuan_Dissolved
+			add_ECO = -5
+			add_MIL = -10
+		}
+	}
+	option = {#No restore
+		name = SIK.2.c
+		immediate = {
+			add_ECO = 5
+			add_MIL = 5
+		}
+	}
+}
+
+country_event = {#New Population of bingtuan
+	id = SIK.3
+	title = SIK.3.t
+	desc = SIK.3.d
+	picture = Minorities
+	trigger = {
+		has_tag = New_Population
+	}
+	option = {#Han from East
+		name = SIK.3.a
+		immediate = {
+			add_MIL = -15
+			add_ECO = -5
+			add_CUL = -5
+			add_CIN = 1
+		}
+	}
+	option = {#Locals
+		name = SIK.3.b
+		immediate = {
+			add_ECO = 5
+			add_CUL = 5
+		}
+	}
+}
+
+country_event = {#Afghanistan War
+	id = SIK.4
+	title = SIK.4.t
+	desc = SIK.4.d
+	picture = Soldiers
+	date = 1981.12
+	fire_only_once = yes
+	option = {#Strengthen border patrol
+		name = SIK.4.a
+		immediate = {
+			add_ECO = -10
+			add_MIL = -5
+		}
+	}
+	option = {#Refugee welcome
+		name = SIK.4.b
+		immediate = {
+			add_CUL = 10
+			add_MIL = 5
+			add_CON = 5
+		}
+	}
+	option = {#Status quo
+		name = SIK.4.c
+	}
+}
+
+country_event = {#New RMB banknote
+	id = SIK.5
+	title = SIK.5.t
+	desc = SIK.5.d
+	picture = File_on_desk
+	date = 1987.4
+	fire_only_once = yes
+	option = {#Include ethnic figures
+		name = SIK.5.a
+		immediate = {
+			add_CUL = 15
+		}
+	}
+	option = {#Only include Han figures
+		name = SIK.5.b
+		immediate = {
+			add_CUL = -10
+			add_CON = 10
+		}
+	}
+}
+
+country_event = {#Orthography //Require Further Re-balance
+	id = SIK.6
+	title = SIK.6.t
+	desc = SIK.6.d
+	picture = File_on_desk
+	date = 1976.8
+	fire_only_once = yes
+	option = {#Cyrillic
+		name = SIK.6.a
+		immediate = {
+			add_tag = Cyrillic_Alphabet
+			add_CUL = -5
+			add_CON = 5
+			add_MIL = 5
+			add_ECO = -5
+		}
+	}
+	option = {#Arabic
+		name = SIK.6.b
+		immediate = {
+			add_tag = Arabic_Alphabet
+			add_CUL = 15
+			add_CON = -5
+			add_MIL = 15
+			add_ECO = 5
+		}
+	}
+	option = {#Latin
+		name = SIK.6.c
+		immediate = {
+			add_tag = Latin_Alphabet
+			add_CUL = -10
+			add_CON = 10
+			add_MIL = -5
+			add_ECO = -15
+		}
+	}
+	option = {#Chinese
+		name = SIK.6.e
+		immediate = {
+			add_tag = Chinese_Alphabet
+			add_CUL = -20
+			add_CON = 15
+			add_MIL = -15
+			add_ECO = -5
+			add_CIN = 2
+		}
+	}
+}
+
+country_event = {#Standardize Uyghur
+	id = SIK.7
+	title = SIK.7.t
+	desc = SIK.7.d
+	picture = File_on_desk
+	date = 1977.8
+	trigger = {
+		NOT = {
+			has_tag = Chinese_Alphabet
+		}
+	}
+	option = {#Include all dialect
+		name = SIK.7.a
+		immediate = {
+			add_CUL = 10
+			add_MIL = 5
+			add_CON = -5
+		}
+	}
+	option = {#Only city dialect
+		name = SIK.7.b
+		immediate = {
+			add_ECO = 5
+			add_CON = 5
+		}
+	}
+}
+
+country_event = {#Modernize the language: loaned words
+	id = SIK.8
+	title = SIK.8.t
+	desc = SIK.8.d
+	picture = File_on_desk
+	option = {#All welcome
+		name = SIK.8.a
+		immediate = {
+			add_MIL = 5
+			add_CON = 5
+			add_ECO = 10
+		}
+	}
+	option = {#Only Chinese
+		name = SIK.8.b
+		immediate = {
+			add_MIL = -5
+			add_CON = 5
+			add_CIN = 1
+		}
+	}
+	option = {#No loaned words
+		name = SIK.8.c
+		immediate = {
+			add_CUL = 20
+			add_MIL = 10
+			add_ECO = -20
+			add_CON = -5
+		}
+	}
+}
+
+country_event = {#Monism: identity
+	id = SIK.9
+	title = SIK.9.t
+	desc = SIK.9.d
+	picture = Minorities
+	option = {#Assimilationist: national identity
+		name = SIK.9.a
+		immediate = {
+			add_MIL	= -10
+		}
+	}
+	option = {#Accommodationist: ethnic identity
+		name = SIK.9.b
+		immediate = {
+			add_CUL = 10
+		}
+	}
+	option = {#Han supremacist: Han identity
+		name = SIK.9.c
+		immediate = {
+			add_CIN = 1
+			add_MIL = -20
+			add_CON = 10
+			add_CUL = -5
+		}
+	}
+}
+
+country_event = {#Monism: Pan-Turkism 
+	id = SIK.10
+	title = SIK.10.t
+	desc = SIK.10.d
+	picture = Minorities
+	option = {#Assimilationist: only language
+		name = SIK.10.a
+		immediate = {
+			add_MIL	= -10
+			add_CUL = -10
+		}
+	}
+	option = {#Accommodationist: culture
+		name = SIK.10.b
+		immediate = {
+			add_CUL = 10
+			add_MIL = 10
+		}
+	}
+	option = {#Han supremacist: sinicization
+		name = SIK.10.c
+		immediate = {
+			add_CIN = 1
+			add_MIL = -20
+			add_CON = 15
+			add_CUL = -10
+		}
+	}
+}
+
+country_event = {#Monism: education
+	id = SIK.11
+	title = SIK.11.t
+	desc = SIK.11.d
+	picture = File_on_desk
+	option = {#Assimilationist: Chinese as academic language
+		name = SIK.11.a
+		immediate = {
+			add_MIL	= -5
+			add_CUL = -5
+			add_ECO = 5
+		}
+	}
+	option = {#Accommodationist: local language
+		name = SIK.11.b
+		immediate = {
+			add_CUL = 20
+			add_MIL = 15
+		}
+	}
+	option = {#Han supremacist: only Chinese
+		name = SIK.11.c
+		immediate = {
+			add_CIN = 2
+			add_MIL = -20
+			add_CON = 10
+			add_CUL = -15
+			add_ECO = 10
+		}
+	}
+}
+
+country_event = {#Monism: media
+	id = SIK.12
+	title = SIK.12.t
+	desc = SIK.12.d
+	picture = File_on_desk
+	option = {#Assimilationist: bilingual
+		name = SIK.12.a
+		immediate = {
+			add_ECO = -5
+		}
+	}
+	option = {#Accommodationist: local language
+		name = SIK.12.b
+		immediate = {
+			add_CUL = 10
+			add_MIL = 10
+			add_ECO = -5
+		}
+	}
+	option = {#Han supremacist: only Chinese
+		name = SIK.12.c
+		immediate = {
+			add_CIN = 1
+			add_CUL = -5
+			add_CON = 5
+			add_ECO = 5
+		}
+	}
+}
+
+country_event = {#Completion of Karakorum highway
+	id = SIK.13
+	title = SIK.13.t
+	desc = SIK.13.d
+	date = 1978.6
+	fire_only_once = yes
+	picture = Transportaion_Nexus
+	option = {
+		name = SIK.13.a
+		immediate = {
+			add_ECO = 10
+		}
+	}
+}
+
+country_event = {#Opening of Khunjerab pass?
+	id = SIK.14
+	title = SIK.14.t
+	desc = SIK.14.d
+	date = 1982.8
+	fire_only_once = yes
+	picture = Transportaion_Nexus
+	option = {#Open
+		name = SIK.14.a
+		immediate = {
+			add_tag = Khunjerab_pass
+			add_ECO = 5
+			add_CON = -5
+		}
+	}
+	option = {#No Open
+		name = SIK.14.b
+		immediate = {
+			add_MIL = -5
+		}
+	}
+}
+
+country_event = {#Further Opening of passes?
+	id = SIK.15
+	title = SIK.15.t
+	desc = SIK.15.d
+	picture = Transportaion_Nexus
+	trigger = {
+		OR = {
+			date > 1987.8
+			has_tag = Khunjerab_pass
+		}
+		mean_time_to_happen = 60
+	}
+	option = {#Open
+		name = SIK.15.a
+		immediate = {
+			add_tag = Border_trade
+			remove_tag = Khunjerab_pass
+			add_ECO = 10
+		}
+	}
+	option = {#No Open
+		name = SIK.15.b
+		immediate = {
+			add_MIL = -5
+			add_CON = 5
+		}
+	}
+}
+
+country_event = {#Discovery of Tarim petroleum
+	id = SIK.16
+	title = SIK.16.t
+	desc = SIK.16.d
+	picture = Farm_and_factories
+	date = 1989.4
+	fire_only_once = yes
+	option = {#Develop now
+		name = SIK.16.a
+		immediate = {
+			add_tag = Tarim_develop
+			add_ECO = -5
+		}
+	}
+	option = {#Develop later
+		name = SIK.16.b
+		immediate = {
+			add_CON = 10
+		}
+	}
+}
+
+country_event = {#Delayed development
+	id = SIK.17
+	title = SIK.17.t
+	desc = SIK.17.d
+	picture = Transportaion_Nexus
+	trigger = {
+		date > 1990.9 #date = 1990.10
+		NOT = {
+			has_tag = Tarim_develop
+		}
+		mean_time_to_happen = 6
+	}
+	option = {#Develop
+		name = SIK.17.a
+		immediate = {
+			add_tag = Tarim_develop
+			add_CON = -5
+		}
+	}
+}
+
+country_event = {#Completion of Lanzhou-Xinjiang Railway
+	id = SIK.18
+	title = SIK.18.t
+	desc = SIK.18.d
+	picture = Transportaion_Nexus
+	date = 1990.9
+	fire_only_once = yes
+	option = {
+		name = SIK.18.a
+		immediate = {
+			add_ECO = 10
+			add_MIL = -5
+			add_CON = -5
+		}
+	}
+}
+
+country_event = {#Development of Tarim: workers?
+	id = SIK.19
+	title = SIK.19.t
+	desc = SIK.19.d
+	picture = Minorities
+	trigger = {
+		has_tag = Tarim_develop
+		mean_time_to_happen = 6
+	}
+	if = {
+		limit = {
+			OR = {
+				has_tag = Chinese_Alphabet
+				CIN > 4
+			}
+		}
+		option = {#Locals en masse
+			name = SIK.19.a
+			immediate = {
+				add_ECO = 10
+				add_CON = -5
+				remove_tag = Tarim_develop
+			}
+		}
+	}
+	option = {#Locals subsidiary
+		name = SIK.19.b
+		immediate = {
+			add_ECO = 5
+			remove_tag = Tarim_develop
+		}
+	}
+	option = {#Locals minimal
+		name = SIK.19.c
+		immediate = {
+			add_CON = 10
+			remove_tag = Tarim_develop
+		}
+	}
+}
+
+country_event = {#Discovery of Hami petroleum
+	id = SIK.20
+	title = SIK.20.t
+	desc = SIK.20.d
+	picture = Farm_and_factories
+	date = 1991.2
+	option = {#Focus on Tarim
+		name = SIK.20.a
+	}
+	option = {#Both
+		name = SIK.20.b
+		immediate = {
+			add_tag = Hami_develop
+			add_ECO = -10
+			add_CON = 5
+		}
+	}
+}
+
+country_event = {#Riot of 1989
+	id = SIK.21
+	title = SIK.21.t
+	desc = SIK.21.d
+	picture = Riot
+	date = 1989.5
+	immediate = {
+		add_tag = major_riot
+	}
+	option = {#Suppress
+		name = SIK.21.a
+		immediate = {
+			remove_tag = major_riot
+			add_CON = -50
+		}
+	}
+	option = {#Mild Suppress
+		name = SIK.21.b
+		immediate = {
+			remove_tag = major_riot
+			add_tag = minor_riot
+			add_CON = -30
+		}
+	}
+	option = {#No Suppress
+		name = SIK.21.c
+		immediate = {
+			add_CON = 15
+			add_MIL = 10
+		}
+	}
+}
+
+country_event = {#Riot of 1990
+	id = SIK.22
+	title = SIK.22.t
+	desc = SIK.22.d
+	picture = Riot
+	date = 1990.4
+	immediate = {
+		add_tag = major_riot
+	}
+	option = {#Suppress
+		name = SIK.21.a
+		immediate = {
+			remove_tag = major_riot
+			add_CON = -50
+		}
+	}
+	option = {#Mild Suppress
+		name = SIK.21.b
+		immediate = {
+			remove_tag = major_riot
+			add_tag = minor_riot
+			add_CON = -30
+		}
+	}
+	option = {#No Suppress
+		name = SIK.21.c
+		immediate = {
+			add_CON = 15
+			add_MIL = 10
+		}
+	}
+}
+
+country_event = {#Visit of HuaGuofeng
+	id = SIK.23
+	title = SIK.23.t
+	desc = SIK.23.d
+	picture = Transportaion_Nexus
+	date = 1978.9
+}
+
+country_event = {#Visit of DengXiaoPing
+	id = SIK.24
+	title = SIK.24.t
+	desc = SIK.24.d
+	picture = Transportaion_Nexus
+	date = 1981.8
+}
+
+country_event = {#Visit of HuYaobang
+	id = SIK.25
+	title = SIK.25.t
+	desc = SIK.25.d
+	picture = Transportaion_Nexus
+	date = 1983.5
+}
+
+country_event = {#Visit of LiPeng
+	id = SIK.26
+	title = SIK.26.t
+	desc = SIK.26.d
+	picture = Transportaion_Nexus
+	date = 1989.11
+}
+
+country_event = {#Visit of JiangZemin
+	id = SIK.27
+	title = SIK.27.t
+	desc = SIK.27.d
+	picture = Transportaion_Nexus
+	date = 1990.8
+}
