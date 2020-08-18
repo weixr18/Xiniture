@@ -1,8 +1,21 @@
 <template>
   <div class="welcome">
-    <h1>Xiniture Project</h1>
-    <h2>A Role-play Game</h2>
-    <el-button type="primary" @click="go">Enter Game</el-button>
+    <div
+      class="background"
+      v-bind:style="{
+        backgroundImage:'url(' + bg + ')',
+        backgroundRepeat:'no-repeat',
+        backgroundSize:'cover'
+        }"
+    >
+      <div class="wrapper">
+        <h1>Xiniture Project</h1>
+        <h2>A Role-play Game</h2>
+        <div class="button-wrapper">
+          <el-button type="primary" @click="go">Enter Game</el-button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -10,18 +23,21 @@
 export default {
   name: "Welcome",
   data() {
-    return {};
+    return {
+      bg: require("../../static/images/Map_of_Xinjiang.jpg"),
+      // require 的初始路径就是vue文件所在路径
+    };
   },
   methods: {
     go() {
       let info = {
         thisPage: "welcome",
         newPost: true,
-        target: "notice"
+        target: "notice",
       };
       this.$game.ge.buttonClick(this, info);
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -29,8 +45,35 @@ export default {
 <style scoped>
 .welcome {
   margin-bottom: 20%;
-  margin-left: 30%;
-  margin-right: 30%;
+  margin-left: 20%;
+  margin-right: 20%;
+  border-color: #777777;
+  border-right: 3px outset;
+  border-top: 3px outset;
+  border-left: 3px outset;
+  border-bottom: 3px outset;
+}
+
+.background {
+  height: 100%;
+  width: 100%;
+  background: no-repeat center;
+  background-size: cover;
+  position: relative;
+  padding-top: 250px;
+  padding-bottom: 250px;
+}
+
+.wrapper {
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.65);
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.button-wrapper {
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .el-header,
@@ -68,9 +111,19 @@ body > .el-container {
   line-height: 320px;
 }
 
-h1,
-h2 {
+h1 {
+  font-size: 100px;
   font-weight: normal;
+  font-family: "Catherine-de-Beaumont";
+  margin-top: 0%;
+  margin-bottom: 0%;
+}
+h2 {
+  font-size: 70px;
+  font-weight: normal;
+  font-family: "Catherine-de-Beaumont";
+  margin-top: 0%;
+  margin-bottom: 0%;
 }
 ul {
   list-style-type: none;

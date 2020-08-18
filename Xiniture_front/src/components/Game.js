@@ -1,4 +1,4 @@
-import qs from 'qs'
+//import qs from 'qs'
 
 function GameEngine() {
 
@@ -320,6 +320,17 @@ function GameEngine() {
         cpnt.title = pageContent.title
         cpnt.text = pageContent.description
         cpnt.choiceList = pageContent.option
+        if (pageContent.picture !== undefined && pageContent.picture !== "") {
+            cpnt.bg = require("../../static/images/" + pageContent.picture)
+        }
+        else if (pageContent.picture === undefined) {
+            console.log("11111111111111")
+            cpnt.bg = require("../../static/images/" + "blank.jpg")
+        }
+        else if (pageContent.picture === "") {
+            console.log("222222222222222")
+            cpnt.bg = require("../../static/images/" + "blank.jpg")
+        }
     }
 }
 

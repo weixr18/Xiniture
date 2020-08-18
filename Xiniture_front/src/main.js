@@ -7,7 +7,7 @@ import Game from '@/components/Game';
 import ElementUi from 'element-ui'
 import VueResource from 'vue-resource';
 import 'element-ui/lib/theme-chalk/index.css'
-
+import './assets/fonts/font.css'
 
 Vue.prototype.$game = Game;
 Vue.config.productionTip = false

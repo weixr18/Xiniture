@@ -5,7 +5,7 @@
         "id": 0,
         "title": "Introduction of Xinjiang",
         "description": "Xinjiang, officially the Xinjiang Uyghur Autonomous Region[8] (XUAR), is an autonomous region of the People's Republic of China, located in the northwest of the country. Being the largest province-level division of China and the 8th largest country subdivision in the world, Xinjiang spans over 1.6 million km2 (640,000 square miles).[1] The Aksai Chin region, administered by China mostly as part of Xinjiang's Hotan Prefecture, is claimed by India. Xinjiang borders the countries of Mongolia (Bayan-Ölgii, Khovd and Govi-Altai Provinces), Russia (Altai Republic), Kazakhstan (East Kazakhstan and Almaty Provinces), Kyrgyzstan (Issyk Kul, Naryn and Osh Regions), Tajikistan (Gorno-Badakhshan Autonomous Region), and Afghanistan (Badakhshan). The rugged Karakoram, Kunlun and Tian Shan mountain ranges occupy much of Xinjiang's borders, as well as its western and southern regions. Xinjiang also borders the Tibet Autonomous Region and the provinces of Gansu and Qinghai. The most well-known route of the historical Silk Road ran through the territory from the east to its northwestern border. ",
-        "picture": "Map_of_Xinjiang",
+        "picture": "Map_of_Xinjiang.jpg",
         "date": "1975.01",
         "fire_only_once": true,
         "option": [
@@ -23,8 +23,8 @@
         "type": "introduction",
         "id": 1,
         "title": "Xinjiang's Economy",
-        "description": "",
-        "picture": "Farm_and_factories",
+        "description": "Xinjiang has traditionally been an agricultural region, but is also rich in minerals and oil. Nominal GDP was about 932.4 billion RMB (US$140 billion) as of 2015 with an average annual increase of 10.4% for the past four years, due to discovery of the abundant reserves of coal, oil, gas as well as the China Western Development policy introduced by the State Council to boost economic development in Western China. Its per capita GDP for 2009 was 19,798 RMB (US$2,898), with a growth rate of 1.7%. Southern Xinjiang, with 95% non-Han population, has an average per capita income half that of Xinjiang as a whole. ",
+        "picture": "Farm_and_factories.jpg",
         "date": "1975.01",
         "fire_only_once": true,
         "option": [
@@ -43,7 +43,7 @@
         "id": 2,
         "title": "Minor Ethnicities and Culture",
         "description": "",
-        "picture": "Minorities",
+        "picture": "Minorities0.jpg",
         "date": "1975.01",
         "fire_only_once": true,
         "option": [
@@ -63,7 +63,7 @@
         "id": 3,
         "title": "Separatism in Xinjiang",
         "description": "",
-        "picture": "Separatist",
+        "picture": "Separatist.jpg",
         "date": "1975.01",
         "immediate": {
             "add_tag": []
@@ -83,7 +83,7 @@
         "id": 0,
         "title": "",
         "description": "",
-        "picture": "Riot",
+        "picture": "Riot0.jpeg",
         "trigger": {
             "CON": {
                 "compare": "greater",
@@ -142,7 +142,7 @@
         "id": 1,
         "title": "",
         "description": "",
-        "picture": "Riot",
+        "picture": "Riot1.jpg",
         "trigger": {
             "CON": {
                 "compare": "greater",
@@ -215,8 +215,8 @@
         "type": "SIK",
         "id": 0,
         "title": "Dissolution of Bingtuan?",
-        "description": "Even Bingtuan is mostly self-sufficient on economy, the poor nature conditions in Xinjiang prevents Bingtuan to produce more. Now that the state of economy is not looking good all over the country, some argues for the dissolution of Bingtuan so its members can join the development of more prosprous areas at a higher efficiency.",
-        "picture": "File_on_desk",
+        "description": "Bingtuan has played important role in the governing of Xinjiang. It takes care of both internal and external security -  separatist groups and infiltrators are always major concerns since the first days of China governance. It also plays the role of merging the culture and economical gap between Xinjiang and the eastern part of China: intellectuals and workers immigrated from eastern China brings industrialization and modernization to this northwestern province. Even Bingtuan is mostly self-sufficient on economy, the poor nature conditions in Xinjiang prevents Bingtuan to produce more. Now that the state of economy is not looking good all over the country, some argues for the dissolution of Bingtuan so its members can join the development of more prosperous areas at a higher efficiency.",
+        "picture": "File_on_desk.jpg",
         "fire_only_once": true,
         "date": "1975.03",
         "immediate": {
@@ -265,7 +265,7 @@
         "id": 1,
         "title": "Bingtuan members returning to the east",
         "description": "After the dissolution of Bingtuan, those members who came from cities such as Shanghai when Bingtuan was first founded have now returned to their home. This causes a sharp decrease of educated workers and Han ethnics in Xinjiang.",
-        "picture": "Transportaion_Nexus",
+        "picture": "Transportation.jpg",
         "fire_only_once": true,
         "date": "1975.03",
         "trigger": {
@@ -295,7 +295,7 @@
         "id": 2,
         "title": "Restoration of Bingtuan?",
         "description": "Recent unrest and border tensions brings a voice calling for the restoration of Bingtuan rise to surface in Beijing. Most agree it is the best way to keep possible subversive activities at bay, while the size and urgency of the restoration is not yet decided. Still there are some others claiming it would only be another ineffective economical burden.",
-        "picture": "File_on_desk",
+        "picture": "File_on_desk.jpg",
         "fire_only_once": false,
         "date": "",
         "trigger": {
@@ -369,7 +369,7 @@
         "id": 3,
         "title": "New Bingtuan members needed",
         "description": "Since the restoration of Bingtuan has begun, we have to find men willing to fight harsh climate and contribute to local development. The question is, where should we focus on recruiting new members?",
-        "picture": "Minorities",
+        "picture": "Minorities1.jpg",
         "fire_only_once": false,
         "date": "",
         "trigger": {
@@ -417,7 +417,7 @@
         "id": 4,
         "title": "Afghanistan War broke out!",
         "description": "The USSR just attacked Afghanistan! No doubt there will be refugees fleeing to our border, and the extended border with USSR will cause more infiltration.",
-        "picture": "Soldiers",
+        "picture": "Soldiers.jpg",
         "fire_only_once": true,
         "date": "",
         "immediate": {
@@ -466,7 +466,7 @@
         "id": 5,
         "title": "New design of RMB notes",
         "description": "People's Bank of China is preparing for the publish of a new set of RMB banknotes. Traditionally illustrations of workers and farmers will be featured, but all of them is Han people. We can now include some ethnic figures on the banknotes.",
-        "picture": "File_on_desk",
+        "picture": "File_on_desk.jpg",
         "fire_only_once": true,
         "date": "1987.04",
         "immediate": {
@@ -504,7 +504,7 @@
         "id": 6,
         "title": "Orthography of Uyghur language",
         "description": "Uyghur language had been written in several forms. Now is the time to consider orthography of Uyghur language, so our pulications, education and media can teach and use the orthography.",
-        "picture": "File_on_desk",
+        "picture": "File_on_desk.jpg",
         "fire_only_once": true,
         "date": "1976.08",
         "immediate": {
@@ -521,10 +521,10 @@
                     ],
                     "remove_tag": [],
                     "property_add": {
-                        "CUL": 15,
-                        "CON": -5,
-                        "MIL": 15,
-                        "ECO": 5
+                        "CUL": -5,
+                        "CON": 5,
+                        "MIL": 5,
+                        "ECO": -5
                     }
                 }
             },
@@ -543,6 +543,10 @@
                         "MIL": 15,
                         "ECO": 5
                     }
+                },
+                "country_event": {
+                    "type": "SIK",
+                    "id": 602
                 }
             },
             {
@@ -559,6 +563,10 @@
                         "CON": 10,
                         "MIL": -5,
                         "ECO": -15
+                    },
+                    "country_event": {
+                        "type": "SIK",
+                        "id": 603
                     }
                 }
             },
@@ -577,6 +585,193 @@
                         "MIL": -15,
                         "ECO": -5,
                         "SIN": 2
+                    },
+                    "country_event": {
+                        "type": "SIK",
+                        "id": 604
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "comment": "Aftermath of Cyrillic_Alphabet",
+        "type": "SIK",
+        "id": 601,
+        "title": "USSR infiltrators?",
+        "description": "Since we chose Cyrillic alphabet for Orthography, an decrease in USSR infiltrators found by our intelligence agency was reported. It could be a whiff in the air, or means some infiltrators have escaped our notice.        ",
+        "picture": "Soldiers.jpg",
+        "fire_only_once": false,
+        "date": "1982.07",
+        "trigger": {
+            "has_tag": "Cyrillic_Alphabet",
+            "date": {
+                "compare": "greater",
+                "value": "1982.6"
+            }
+        },
+        "immediate": {
+            "add_tag": []
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "Strengthen border patrol and internal security!",
+                "comment": "",
+                "effect": {
+                    "remove_tag": [],
+                    "property_add": {
+                        "ECO": -10
+                    }
+                }
+            },
+            {
+                "marker": "B",
+                "text": "Take it easy. They are focusing on Afghanistan War now.",
+                "comment": "",
+                "effect": {
+                    "remove_tag": [],
+                    "property_add": {
+                        "MIL": 5,
+                        "CON": 5
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "comment": "Separatists sentiment increasing!",
+        "type": "SIK",
+        "id": 602,
+        "title": "Separatists sentiment increasing!",
+        "description": "Local officials reported that some groups are spreading separatist sentiment by spreading separatist and Pan-Turkism Arabic articles of foreign source. The Arabic orthography makes Pan-Turkism more popular in the masses.",
+        "picture": "Separatist.jpg",
+        "fire_only_once": false,
+        "date": "1982.07",
+        "trigger": {
+            "has_tag": "Arabic_Alphabet",
+            "date": {
+                "compare": "greater",
+                "value": "1982.6"
+            }
+        },
+        "immediate": {
+            "add_tag": []
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "Put censorship on Arabic and Uyghur publication!",
+                "comment": "",
+                "effect": {
+                    "remove_tag": [],
+                    "property_add": {
+                        "CUL": -10,
+                        "ECO": -5
+                    }
+                }
+            },
+            {
+                "marker": "B",
+                "text": "It is of little concern.",
+                "comment": "",
+                "effect": {
+                    "remove_tag": [],
+                    "property_add": {
+                        "MIL": 5,
+                        "CON": 10
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "comment": "Aftermath of Cyrillic_Alphabet",
+        "type": "SIK",
+        "id": 603,
+        "title": "Latinization in rural areas?",
+        "description": "The Latinization of signs and publications is mostly done in urban areas now. Still, much of the rural areas are still using traditional scripts. We can hurry the project so only latinized Uyghur will be needed in the future, or pause the project as some argues it will preserve Uyghur culture.",
+        "picture": "File_on_desk.jpg",
+        "fire_only_once": false,
+        "date": "1982.07",
+        "trigger": {
+            "has_tag": "Latin_Alphabet",
+            "date": {
+                "compare": "greater",
+                "value": "1982.6"
+            }
+        },
+        "immediate": {
+            "add_tag": []
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "We have to done it thoroughly. Leave no gap between cities and countryside!",
+                "comment": "",
+                "effect": {
+                    "remove_tag": [],
+                    "property_add": {
+                        "ECO": 5,
+                        "CUL": -10
+                    }
+                }
+            },
+            {
+                "marker": "B",
+                "text": "We should halt this project.",
+                "comment": "",
+                "effect": {
+                    "remove_tag": [],
+                    "property_add": {
+                        "ECO": -10,
+                        "CUL": 5
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "comment": "Aftermath of Cyrillic_Alphabet",
+        "type": "SIK",
+        "id": 604,
+        "title": "Local resistance of Chinese!",
+        "description": "In the process of substituting Uyghur with Chinese, we meet some resistance. Some local teachers themselves are not fluent with Chinese and general efficiency of society has decreased due to low language difficulties. We may now force this process at the risk of social instability, or take a milder stance at the cost of efficiency.",
+        "picture": "File_on_desk.jpg",
+        "fire_only_once": false,
+        "date": "1982.07",
+        "trigger": {
+            "has_tag": "Chinese_Alphabet",
+            "date": {
+                "compare": "greater",
+                "value": "1982.6"
+            }
+        },
+        "immediate": {
+            "add_tag": []
+        },
+        "option": [
+            {
+                "marker": "A",
+                "text": "Force the issue! There is no turning back.",
+                "comment": "",
+                "effect": {
+                    "remove_tag": [],
+                    "property_add": {
+                        "MIL": 5,
+                        "CON": 15
+                    }
+                }
+            },
+            {
+                "marker": "B",
+                "text": "Use moderate ways, there is no need to hurry.",
+                "comment": "",
+                "effect": {
+                    "remove_tag": [],
+                    "property_add": {
+                        "ECO": -5,
+                        "CON": 5
                     }
                 }
             }
@@ -588,7 +783,7 @@
         "id": 7,
         "title": "Standardize Uyghur language",
         "description": "After the orthography of Uyghur language is completed, we can consider to standardize it as we did to Putonghua. Going for extensive field research will preserve the culture better, but at a higher expense.",
-        "picture": "File_on_desk",
+        "picture": "File_on_desk.jpg",
         "fire_only_once": false,
         "date": "1977.08",
         "trigger": {
@@ -631,7 +826,7 @@
         "id": 8,
         "title": "Modernizing Uyghur: Loaned words",
         "description": "Most language have loaned words and it is quite necessary as loaned words can express some concepts better. Some languages loan word from all other languages alike, while other languages have the majority of loaned words loaned from a few languages. When it comes to Uyghur language, what policy shall we chose?",
-        "picture": "File_on_desk",
+        "picture": "File_on_desk.jpg",
         "fire_only_once": false,
         "date": "1978.08",
         "immediate": {
@@ -686,7 +881,7 @@
         "id": 9,
         "title": "An identity for people live in Xinjiang",
         "description": "We may strengthen the national identity in our media and education for people live in Xinjiang by referring them to \"Chinese Nationals\" as a whole or strengthen ethnic identity by seperating them into different groups such as \"Uyghurs/Tajiks/Huis\". We can be even more radical, claiming all of them are Han, just like \"Hui people are only Han who believe in Muslim\".",
-        "picture": "Minorities",
+        "picture": "Minorities2.jpg",
         "fire_only_once": false,
         "date": "1979.08",
         "immediate": {
@@ -737,7 +932,7 @@
         "id": 10,
         "title": "Handling Pan-Turkism",
         "description": "Pan-Turkism is somewhat controversial. The culture in Xinjiang, especially the Uyghur language do have some resemblance with Turk culture. However, Pan-Turkism also is the rally flag of several separatism groups. How should we handle it?",
-        "picture": "Minorities",
+        "picture": "Minorities0.jpg",
         "fire_only_once": false,
         "date": "1980.08",
         "immediate": {
@@ -790,7 +985,7 @@
         "id": 11,
         "title": "Education reforms in Xinjiang",
         "description": "Previously kids are taught in local language in primary schools and only those who have access to higher education recieve Chinese education. Now we have several plans of reform.",
-        "picture": "File_on_desk",
+        "picture": "File_on_desk.jpg",
         "fire_only_once": false,
         "date": "1981.08",
         "immediate": {
@@ -845,7 +1040,7 @@
         "id": 12,
         "title": "State owned media in Xinjiang",
         "description": "We have several state owned media in Xinjiang. In the past days, their majority audience is Han people, so only Chinese is used. Now more and more locals are enjoying these media, should we created a local language version for them?",
-        "picture": "File_on_desk",
+        "picture": "File_on_desk.jpg",
         "fire_only_once": false,
         "date": "1982.08",
         "immediate": {
@@ -898,7 +1093,7 @@
         "id": 13,
         "title": "Completion of Karakorum highway",
         "description": "The completion of Karakorum highway is a milestone for infrastructure construction in Xinjiang. As the saying goes: \"Infrastructure is the gate to prosperity\"",
-        "picture": "Transportaion_Nexus",
+        "picture": "Transportation1.jpg",
         "fire_only_once": true,
         "date": "1978.06",
         "immediate": {
@@ -925,7 +1120,7 @@
         "id": 14,
         "title": "Opening of Khunjerab pass?",
         "description": "Local officials have motioned to open Khunjerab pass, claiming the local need of cross-border trade is high. However, the threat of infiltration is one of the major concern.",
-        "picture": "Transportaion_Nexus",
+        "picture": "Transportation2.jpg",
         "fire_only_once": true,
         "date": "1982.08",
         "immediate": {
@@ -967,7 +1162,7 @@
         "id": 15,
         "title": "Further Opening of border passes?",
         "description": "The Khunjerab pass has been proven successful in many ways. The surge in cross-border trade and the local economy boom encourage more areas applying for further opening of border passes. How should we reply?",
-        "picture": "Transportaion_Nexus",
+        "picture": "Transportation2.jpg3",
         "fire_only_once": false,
         "date": "",
         "trigger": {
@@ -1016,7 +1211,7 @@
         "type": "SIK",
         "id": 16,
         "title": "Discovery of Tarim petroleum",
-        "picture": "Farm_and_factories",
+        "picture": "Farm_and_factories.jpg",
         "description": "We found large deposite of petroleum in Tarim basin! It would be of great importance since the deposite northeastern petroleum fields are running low and demands of petroleum is increasing. Develop is necessary, but when? Poor infrastructure around the basin brings difficulties in development and some say we shall improve infrastructure first.",
         "fire_only_once": true,
         "date": "1989.04",
@@ -1058,7 +1253,7 @@
         "id": 17,
         "title": "Infrastructures ready",
         "description": "The completion of Lanzhou-Xinjiang Railway brings a surge of economical development in Xinjiang. New roads are built all over the province and the transportation capacity has increased sharply.",
-        "picture": "Transportaion_Nexus",
+        "picture": "Transportation3.jpg",
         "fire_only_once": false,
         "date": "",
         "trigger": {
@@ -1097,7 +1292,7 @@
         "id": 18,
         "title": "Completion of Lanzhou-Xinjiang Railway",
         "description": "Lanzhou-Xinjiang is one of the most important transportation infrastructure in northwestern China. The days of insufficient transportation capacity are no longer our concern.",
-        "picture": "Transportaion_Nexus",
+        "picture": "Transportation3.jpg",
         "fire_only_once": true,
         "date": "1990.09",
         "immediate": {
@@ -1126,7 +1321,7 @@
         "id": 19,
         "title": "Recruiting workers of Tarim development",
         "description": "First phases of Tarim development need workers, both well-educated and less-educated alike. Recruiting locals is much cheaper compared to migrating workers from eastern Chinese, but some are afraid of low communication efficiency between locals and technicians will lead to incidents.",
-        "picture": "Minorities",
+        "picture": "Minorities1.jpg",
         "fire_only_once": false,
         "date": "",
         "trigger": {
@@ -1197,7 +1392,7 @@
         "id": 20,
         "title": "Discovery of Hami petroleum",
         "description": "We found large deposite of petroleum in Hami basin! But now the majority of our experts are working on the Tarim construction site. Should we focus on Tarim first or develop both at once?",
-        "picture": "Farm_and_factories",
+        "picture": "Farm_and_factories.jpg",
         "fire_only_once": false,
         "date": "1991.02",
         "immediate": {
@@ -1237,7 +1432,7 @@
         "id": 21,
         "title": "Riot",
         "description": "",
-        "picture": "Riot",
+        "picture": "Riot2.jpg",
         "fire_only_once": false,
         "date": "1989.05",
         "immediate": {
@@ -1295,7 +1490,7 @@
         "id": 22,
         "title": "Riot",
         "description": "",
-        "picture": "Riot",
+        "picture": "Riot3.jpg",
         "fire_only_once": false,
         "date": "1990.04",
         "immediate": {
@@ -1355,7 +1550,7 @@
         "id": 23,
         "title": "Visit of HuaGuofeng",
         "description": "",
-        "picture": "Transportaion_Nexus",
+        "picture": "",
         "fire_only_once": false,
         "date": "1978.09",
         "immediate": {
@@ -1380,7 +1575,7 @@
         "id": 24,
         "title": "Visit of DengXiaoPing",
         "description": "",
-        "picture": "Transportaion_Nexus",
+        "picture": "",
         "fire_only_once": false,
         "date": "1981.08",
         "immediate": {
@@ -1405,7 +1600,7 @@
         "id": 25,
         "title": "Visit of HuYaobang",
         "description": "",
-        "picture": "Transportaion_Nexus",
+        "picture": "",
         "fire_only_once": false,
         "date": "1983.05",
         "immediate": {
@@ -1430,7 +1625,7 @@
         "id": 26,
         "title": "Visit of LiPeng",
         "description": "",
-        "picture": "Transportaion_Nexus",
+        "picture": "",
         "fire_only_once": false,
         "date": "1989.11",
         "immediate": {
@@ -1453,7 +1648,7 @@
         "comment": "Visit of JiangZemin",
         "type": "SIK",
         "id": 27,
-        "picture": "Transportaion_Nexus",
+        "picture": "",
         "title": "Visit of JiangZemin",
         "date": "1990.08",
         "fire_only_once": false,
