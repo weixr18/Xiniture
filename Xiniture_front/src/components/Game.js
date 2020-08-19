@@ -98,14 +98,14 @@ function GameEngine() {
                 this.userID = info.userID;
                 console.log(info.ageValue, info.countryValue);
 
-                let info_send_back = {
+                let info_to_send = {
                     "user_id": info.userID,
                     "log_time": this.logTime,
                     "user_age": info.ageValue,
                     "user_nation": info.countryValue,
                 }
                 let url = '/api/user_info';
-                cpnt.$http.post(url, info_send_back, { emulateJSON: true }).then(res => {
+                cpnt.$http.post(url, info_to_send, { emulateJSON: true }).then(res => {
                     console.log(res.body);
                 });
             }
@@ -139,7 +139,7 @@ function GameEngine() {
 
             //2. 向服务器发送记录
             let curT = curentTime();
-            var info_send_back = {
+            var info_to_send = {
                 "user_id": 0,
                 "log_time": this.logTime,
                 "click_time": curT,
@@ -155,12 +155,33 @@ function GameEngine() {
                 "CUL": this.state.CUL,
                 "SIN": this.state.SIN,
             };
-            //console.log("info_send_back:", info_send_back);
 
             let url = '/api/user_action';
-            cpnt.$http.post(url, info_send_back, { emulateJSON: true }).then(res => {
+
+            /*
+            cpnt.$http.jsonp(url, info_to_send).then(res => {
                 console.log(res.body);
             });
+            */
+            /*
+            cpnt.$http.ajax({
+                type: "POST",
+                async: false,
+                url: url,
+                data: JSON.stringify(info_to_send),
+                contentType: "application/json",
+                success: function (res) {
+                    console.log(res.body);
+                },
+                error: function (res) { console.log(res.body); }
+            });
+            */
+
+
+            cpnt.$http.post(url, info_to_send, { emulateJSON: false }).then(res => {
+                console.log(res.body);
+            });
+
 
 
             //3. 获取页面内容
