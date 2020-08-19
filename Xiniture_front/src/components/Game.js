@@ -58,15 +58,17 @@ function GameEngine() {
             cpnt.$game.ge.eventQueue.sort(
                 (a, b) => Number(a.date) - Number(b.date)
             );
-            console.log("initial:", cpnt.$game.ge.eventQueue);
+            //console.log("initial:", cpnt.$game.ge.eventQueue);
 
             //初始化监听列表
             cpnt.$game.ge.listenList = cpnt.$game.ge.events.filter(
                 (value) => { return value.type === "riot" || (value.date === "" && value.trigger !== undefined) }
             );
 
-            let time = new Date();
-            cpnt.$game.ge.logTime = time.getTime();
+            if (cpnt.$game.ge.logTime === undefined) {
+                let time = new Date();
+                cpnt.$game.ge.logTime = time.getTime();
+            }
 
             //渲染第一页
             let nxtPage = {
@@ -95,18 +97,26 @@ function GameEngine() {
             // URL跳转
             if (info.thisPage === "info") {
                 //信息上传
-                this.userID = info.userID;
-                console.log(info.ageValue, info.countryValue);
-
+                if (this.logTime === undefined) {
+                    let time = new Date();
+                    this.logTime = time.getTime();
+                }
                 let info_to_send = {
-                    "user_id": info.userID,
                     "log_time": this.logTime,
                     "user_age": info.ageValue,
                     "user_nation": info.countryValue,
                 }
+                //console.log(info_to_send)
+
                 let url = '/api/user_info';
                 cpnt.$http.post(url, info_to_send, { emulateJSON: false }).then(res => {
-                    console.log(res.body);
+                    if (res.body.userID !== undefined) {
+                        cpnt.$game.ge.userID = res.body.userID;
+                        //console.log("Get user ID:", cpnt.$game.ge.userID);
+                    }
+                    else {
+                        console.log("ERROR: Could not get user ID!");
+                    }
                 });
             }
             cpnt.$router.push("/" + info.target);
@@ -135,12 +145,12 @@ function GameEngine() {
                 this.buttonClick(cpnt, info);
                 return;
             }
-            console.log("nextevent:", nextEvent.type, nextEvent.id)
+            //console.log("nextevent:", nextEvent.type, nextEvent.id)
 
             //2. 向服务器发送记录
             let curT = curentTime();
             var info_to_send = {
-                "user_id": 0,
+                "user_id": this.userID,
                 "log_time": this.logTime,
                 "click_time": curT,
                 "current_page": {
@@ -157,32 +167,9 @@ function GameEngine() {
             };
 
             let url = '/api/user_action';
-
-            /*
-            cpnt.$http.jsonp(url, info_to_send).then(res => {
-                console.log(res.body);
-            });
-            */
-            /*
-            cpnt.$http.ajax({
-                type: "POST",
-                async: false,
-                url: url,
-                data: JSON.stringify(info_to_send),
-                contentType: "application/json",
-                success: function (res) {
-                    console.log(res.body);
-                },
-                error: function (res) { console.log(res.body); }
-            });
-            */
-
-
             cpnt.$http.post(url, info_to_send, { emulateJSON: false }).then(res => {
-                console.log(res.body);
+                //console.log(res.body);
             });
-
-
 
             //3. 获取页面内容
             this.state.pageContent = this.getContent(nextEvent)[0]
@@ -197,7 +184,7 @@ function GameEngine() {
     this.nextEvent = function (info) {
         // 寻找下一个事件
         //0. 获取选项
-        console.log("marker:", info.marker);
+        //console.log("marker:", info.marker);
         let pageContent = this.state.pageContent;
         let chosenOpt = pageContent.option.filter(e => e.marker === info.marker);
         if (chosenOpt.length === 0) {
@@ -337,7 +324,7 @@ function GameEngine() {
 
             if (flag) {
                 // 激活条件满足
-                console.log("SATISFIED!!! Event:", event);
+                //console.log("SATISFIED!!! Event:", event);
 
                 // 设置该event的date
                 if (event.trigger !== undefined &&
