@@ -35,6 +35,7 @@ export default {
         newPost: true,
         target: "notice",
       };
+      this.$forceUpdate();
       this.$game.ge.buttonClick(this, info);
     },
   },

@@ -70,6 +70,25 @@ function GameEngine() {
                 cpnt.$game.ge.logTime = time.getTime();
             }
 
+            //分数置零
+            if (this.state === undefined) {
+                this.state = {
+                    date: "1960.01",
+                    ECO: 0,
+                    MIL: 0,
+                    CON: 0,
+                    CUL: 0,
+                    SIN: 0,
+                    labels: [],
+                    pageContent: {},
+                };
+            }
+            this.state.ECO = 0;
+            this.state.MIL = 0;
+            this.state.CON = 0;
+            this.state.CUL = 0;
+            this.state.SIN = 0;
+
             //渲染第一页
             let nxtPage = {
                 type: "introduction",
@@ -95,6 +114,19 @@ function GameEngine() {
         //点击事件处理
         if (info.newPost && info.target !== undefined) {
             // URL跳转
+            if (info.target === "") {
+                // Replay
+                if (this.state !== undefined) {
+                    this.state.ECO = 0;
+                    this.state.MIL = 0;
+                    this.state.CON = 0;
+                    this.state.CUL = 0;
+                    this.state.SIN = 0;
+                }
+                if (this.userID !== undefined) {
+                    this.userID = undefined;
+                }
+            }
             if (info.thisPage === "info") {
                 //信息上传
                 if (this.logTime === undefined) {
@@ -118,6 +150,7 @@ function GameEngine() {
                         console.log("ERROR: Could not get user ID!");
                     }
                 });
+
             }
             cpnt.$router.push("/" + info.target);
         }

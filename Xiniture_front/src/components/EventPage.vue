@@ -19,7 +19,7 @@
         <h4 ref="text" class="text">{{text}}</h4>
         <ul v-if="choiceList.length > 1">
           <p v-for="item in choiceList" v-bind:key="item.marker">
-            <el-button @click="go(item.marker)" autofocus="False">{{item.text}}</el-button>
+            <el-button @click="go(item.marker)" autofocus:False>{{item.text}}</el-button>
           </p>
         </ul>
         <ul v-if="choiceList.length === 1">
@@ -40,7 +40,7 @@ export default {
       title: "EVENT",
       text: "test text test text xxxxxxxxxxxxxx",
       bg: require("../../static/images/Map_of_Xinjiang.jpg"),
-      date: 1978.01,
+      date: 1959.01,
       score: {
         ECO: 0,
         MIL: 0,
@@ -50,7 +50,7 @@ export default {
       },
     };
   },
-  created() {
+  mounted() {
     this.loadGame();
   },
   methods: {
