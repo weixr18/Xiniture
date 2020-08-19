@@ -9,11 +9,17 @@
         }"
     >
       <div class="wrapper">
+        <li class="top-li">
+          <div class="date-div">Date:{{date}}</div>
+          <div
+            class="score-div"
+          >ECO:{{score.ECO}} MIL:{{score.MIL}} CON:{{score.CON}} CUL:{{score.CUL}} SIN:{{score.SIN}}</div>
+        </li>
         <h1 ref="title">{{title}}</h1>
-        <h4 ref="text">{{text}}</h4>
+        <h4 ref="text" class="text">{{text}}</h4>
         <ul v-if="choiceList.length > 1">
           <p v-for="item in choiceList" v-bind:key="item.marker">
-            <el-button @click="go(item.marker)">{{item.text}}</el-button>
+            <el-button @click="go(item.marker)" autofocus="False">{{item.text}}</el-button>
           </p>
         </ul>
         <ul v-if="choiceList.length === 1">
@@ -34,6 +40,14 @@ export default {
       title: "EVENT",
       text: "test text test text xxxxxxxxxxxxxx",
       bg: require("../../static/images/Map_of_Xinjiang.jpg"),
+      date: 1978.01,
+      score: {
+        ECO: 0,
+        MIL: 0,
+        CUL: 0,
+        CON: 0,
+        SIN: 0,
+      },
     };
   },
   created() {
@@ -84,9 +98,26 @@ export default {
 
 .wrapper {
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.65);
+  background-color: rgba(255, 255, 255, 0.7);
   padding-top: 30px;
   padding-bottom: 30px;
+}
+
+.top-li {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.date-div {
+  height: 100%;
+  float: left;
+}
+
+.score-div {
+  height: 100%;
+  float: right;
 }
 
 h1,
@@ -94,6 +125,13 @@ h2 {
   font-weight: normal;
   margin-top: 0%;
 }
+
+.text {
+  text-align: left;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 ul {
   list-style-type: none;
   padding: 0;

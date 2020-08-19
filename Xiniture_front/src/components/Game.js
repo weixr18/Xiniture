@@ -1,5 +1,37 @@
 //import qs from 'qs'
 
+function curentTime() {
+    var now = new Date();
+    var year = now.getFullYear();       //年
+    var month = now.getMonth() + 1;     //月
+    var day = now.getDate();            //日
+
+    var hh = now.getHours();            //时
+    var mm = now.getMinutes();          //分
+    var ss = now.getSeconds();          //分
+
+    var clock = year + "-";
+    if (month < 10)
+        clock += "0";
+
+    clock += month + "-";
+    if (day < 10)
+        clock += "0";
+
+    clock += day + " ";
+    if (hh < 10)
+        clock += "0";
+
+    clock += hh + ":";
+    if (mm < 10)
+        clock += '0';
+    clock += mm + ":";
+    if (ss < 10)
+        clock += '0';
+    clock += ss;
+    return clock;
+}
+
 function GameEngine() {
 
     this.state = {
@@ -12,7 +44,6 @@ function GameEngine() {
         labels: [],
         pageContent: {},
     };
-
 
     this.loadGame = function (cpnt) {
         // 载入游戏
@@ -52,12 +83,32 @@ function GameEngine() {
         })
     };
 
+    /*
+    buttonClick -- nextEvent
+                └- sendInfo
+                └- getContent
+                └- upDatePage
+    */
     this.buttonClick = function (cpnt, info) {
         //点击事件处理
         if (info.newPost && info.target !== undefined) {
             // URL跳转
             if (info.thisPage === "info") {
+                //信息上传
                 this.userID = info.userID;
+                this.logTime = curentTime();
+                console.log(info.ageValue, info.countryValue);
+
+                let info_send_back = {
+                    "user_id": info.userID,
+                    "log_time": this.logTime,
+                    "user_age": info.ageValue,
+                    "user_nation": info.countryValue,
+                }
+                let url = '/api/user_info';
+                cpnt.$http.post(url, info_send_back, { emulateJSON: true }).then(res => {
+                    console.log(res.body);
+                });
             }
             cpnt.$router.push("/" + info.target);
         }
@@ -65,7 +116,7 @@ function GameEngine() {
             // 游戏内
 
             //1. 寻找下一事件
-            console.log(this.eventQueue);
+            //console.log(JSON.parse(JSON.stringify(this.eventQueue)));
             let pageContent = this.state.pageContent;
             if (pageContent.option.length === 1 &&
                 pageContent.option[0].country_event !== undefined) {
@@ -88,9 +139,11 @@ function GameEngine() {
             console.log("nextevent:", nextEvent.type, nextEvent.id)
 
             //2. 向服务器发送记录
+            let curT = curentTime();
             var info_send_back = {
                 "user_id": 0,
                 "log_time": this.logTime,
+                "click_time": curT,
                 "current_page": {
                     "id": this.state.pageContent.id,
                     "type": this.state.pageContent.type
@@ -103,7 +156,7 @@ function GameEngine() {
                 "CUL": this.state.CUL,
                 "SIN": this.state.SIN,
             };
-            console.log("info_send_back:", info_send_back);
+            //console.log("info_send_back:", info_send_back);
 
             let url = '/api/user_action';
             cpnt.$http.post(url, info_send_back, { emulateJSON: true }).then(res => {
@@ -122,13 +175,11 @@ function GameEngine() {
     }
 
     this.nextEvent = function (info) {
-
         // 寻找下一个事件
         //0. 获取选项
         console.log("marker:", info.marker);
         let pageContent = this.state.pageContent;
-        //console.log("current event:", pageContent);
-        let chosenOpt = pageContent.option.filter(e => e.marker === info.marker)
+        let chosenOpt = pageContent.option.filter(e => e.marker === info.marker);
         if (chosenOpt.length === 0) {
             console.log("FATAL ERROR!");
             return;
@@ -163,8 +214,6 @@ function GameEngine() {
         if (pageContent.date !== undefined && pageContent.date !== "") {
             this.state.date = pageContent.date;
         }
-        //console.log("state:", this.state);
-
 
         //3. 判定选项是否有country_event，若有则直接返回
         if (effect.country_event !== undefined) {
@@ -217,7 +266,7 @@ function GameEngine() {
                         trigger[key2].compare === "less" && obj.date < trigger[key2].value ||
                         trigger[key2].compare === "greater" && obj.date > trigger[key2].value ||
                         trigger[key2].compare === "equal" && obj.date === trigger[key2].value
-                    )
+                    );
                     if (is_or) {
                         temp_flag = temp_flag || res;
                     }
@@ -232,7 +281,7 @@ function GameEngine() {
                     trigger[key2].compare === "less" && obj.state[key2] < trigger[key2].value ||
                     trigger[key2].compare === "greater" && obj.state[key2] > trigger[key2].value ||
                     trigger[key2].compare === "equal" && obj.state[key2] === trigger[key2].value
-                )
+                );
 
                 if (is_or) {
                     temp_flag = temp_flag || res;
@@ -251,7 +300,7 @@ function GameEngine() {
         for (let event of this.listenList) {
 
             // 用and进行整体判定
-            let flag = trigger_judge(this, event.trigger, false)
+            let flag = trigger_judge(this, event.trigger, false);
 
             //进行or和not部分的判定
             for (let key in event.trigger) {
@@ -309,7 +358,7 @@ function GameEngine() {
     this.getContent = function (nxtEvent) {
         // 获取某个事件的相关信息
         if (this.events !== undefined) {
-            var result = this.events.filter(item => item.type === nxtEvent.type && item.id === nxtEvent.id)
+            var result = this.events.filter(item => item.type === nxtEvent.type && item.id === nxtEvent.id);
             return result
         }
     }
@@ -320,21 +369,26 @@ function GameEngine() {
         cpnt.title = pageContent.title
         cpnt.text = pageContent.description
         cpnt.choiceList = pageContent.option
+        cpnt.date = pageContent.date
+
+        cpnt.score = {
+            ECO: this.state.ECO,
+            MIL: this.state.MIL,
+            CON: this.state.CON,
+            CUL: this.state.CUL,
+            SIN: this.state.SIN,
+        }
+
         if (pageContent.picture !== undefined && pageContent.picture !== "") {
-            cpnt.bg = require("../../static/images/" + pageContent.picture)
+            cpnt.bg = require("../../static/images/" + pageContent.picture);
         }
-        else if (pageContent.picture === undefined) {
-            console.log("11111111111111")
-            cpnt.bg = require("../../static/images/" + "blank.jpg")
-        }
-        else if (pageContent.picture === "") {
-            console.log("222222222222222")
-            cpnt.bg = require("../../static/images/" + "blank.jpg")
+        else if (pageContent.picture === undefined || pageContent.picture === "") {
+            cpnt.bg = require("../../static/images/" + "blank.jpg");
         }
     }
 }
 
-let ge = new GameEngine()
+let ge = new GameEngine();
 
 export default {
     ge

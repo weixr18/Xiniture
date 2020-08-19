@@ -24,7 +24,7 @@ export default {
   name: "Welcome",
   data() {
     return {
-      bg: require("../../static/images/Map_of_Xinjiang.jpg"),
+      bg: require("../../static/images/Riot1.jpg"),
       // require 的初始路径就是vue文件所在路径
     };
   },
@@ -66,7 +66,7 @@ export default {
 
 .wrapper {
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.65);
+  background-color: rgba(255, 255, 255, 0.25);
   padding-top: 30px;
   padding-bottom: 30px;
 }
@@ -114,6 +114,7 @@ body > .el-container {
 h1 {
   font-size: 100px;
   font-weight: normal;
+  color: #000;
   font-family: "Catherine-de-Beaumont";
   margin-top: 0%;
   margin-bottom: 0%;
@@ -121,6 +122,7 @@ h1 {
 h2 {
   font-size: 70px;
   font-weight: normal;
+  color: #000;
   font-family: "Catherine-de-Beaumont";
   margin-top: 0%;
   margin-bottom: 0%;
