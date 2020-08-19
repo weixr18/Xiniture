@@ -105,7 +105,7 @@ function GameEngine() {
                     "user_nation": info.countryValue,
                 }
                 let url = '/api/user_info';
-                cpnt.$http.post(url, info_to_send, { emulateJSON: true }).then(res => {
+                cpnt.$http.post(url, info_to_send, { emulateJSON: false }).then(res => {
                     console.log(res.body);
                 });
             }
