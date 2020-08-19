@@ -21,5 +21,6 @@ from Xiniture_app import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'', TemplateView.as_view(template_name="index.html")),
-    path(r'api/user_action', views.post_user_action, name="user_action")
+    path(r'api/user_action', views.post_user_action, name="user_action"),
+    path(r'api/user_info', views.post_user_info, name="user_info")
 ]

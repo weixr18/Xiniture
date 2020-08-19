@@ -1,1 +1,4 @@
 raw_resource/Xingjiang_Pic.rar
+*/__pycache__
+db.sqlite3
+*.pyc
