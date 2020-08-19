@@ -96,7 +96,6 @@ function GameEngine() {
             if (info.thisPage === "info") {
                 //信息上传
                 this.userID = info.userID;
-                this.logTime = curentTime();
                 console.log(info.ageValue, info.countryValue);
 
                 let info_send_back = {
