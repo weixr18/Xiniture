@@ -1,5 +1,9 @@
 <template>
   <div class="info">
+    <!--
+    <el-alert title="Please choose your age." type="warning" center></el-alert>
+    <el-alert title="Please Choose your nation." type="warning" center></el-alert>
+    -->
     <ul>
       <li>
         <h1>Your Infomation</h1>
@@ -35,6 +39,8 @@
 </template>
 
 <script>
+import { MessageBox } from "element-ui";
+
 export default {
   name: "Info",
   data() {
@@ -382,11 +388,11 @@ export default {
         countryValue: this.$data.countryValue,
       };
       if (info.ageValue === "") {
-        this.$alert("Please choose your age.", "Notice", {
+        MessageBox.alert("Please choose your age.", "Notice", {
           confirmButtonText: "OK",
         });
       } else if (info.countryValue === "") {
-        this.$alert("Please Choose your nation.", "Notice", {
+        MessageBox.alert("Please Choose your nation.", "Notice", {
           confirmButtonText: "OK",
         });
       } else {

@@ -114,20 +114,7 @@ function GameEngine() {
         //点击事件处理
         if (info.newPost && info.target !== undefined) {
             // URL跳转
-            if (info.target === "") {
-                // Replay
-                if (this.state !== undefined) {
-                    this.state.ECO = 0;
-                    this.state.MIL = 0;
-                    this.state.CON = 0;
-                    this.state.CUL = 0;
-                    this.state.SIN = 0;
-                }
-                if (this.userID !== undefined) {
-                    this.userID = undefined;
-                }
-            }
-            if (info.thisPage === "info") {
+            if (info.thisPage === "info" && info.target === "event") {
                 //信息上传
                 if (this.logTime === undefined) {
                     let time = new Date();
@@ -151,8 +138,31 @@ function GameEngine() {
                     }
                 });
 
+                cpnt.$router.push("/" + info.target);
             }
-            cpnt.$router.push("/" + info.target);
+            else if (info.thisPage === "result" && info.target === "") {
+                // Replay
+                if (this.state !== undefined) {
+                    this.state.ECO = 0;
+                    this.state.MIL = 0;
+                    this.state.CON = 0;
+                    this.state.CUL = 0;
+                    this.state.SIN = 0;
+                }
+                if (this.userID !== undefined) {
+                    this.userID = undefined;
+                }
+
+                cpnt.$router.push("/" + info.target);
+            }
+            else if (info.thisPage === "event" && info.target === "result") {
+                // 游戏结束
+                cpnt.$router.push("/" + info.target);
+            }
+            else {
+                cpnt.$router.push("/" + info.target);
+            }
+
         }
         else {
             // 游戏内
@@ -357,7 +367,7 @@ function GameEngine() {
 
             if (flag) {
                 // 激活条件满足
-                //console.log("SATISFIED!!! Event:", event);
+                console.log("SATISFIED!!! Event:", event);
 
                 // 设置该event的date
                 if (event.trigger !== undefined &&
