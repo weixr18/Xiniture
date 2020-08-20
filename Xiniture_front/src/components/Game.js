@@ -405,18 +405,23 @@ function GameEngine() {
 
     this.updatePage = function (cpnt) {
         // 更新页面元素
-        let pageContent = this.state.pageContent
-        cpnt.title = pageContent.title
-        cpnt.text = pageContent.description
-        cpnt.choiceList = pageContent.option
-        cpnt.date = pageContent.date
+        let pageContent = this.state.pageContent;
+        cpnt.title = pageContent.title;
+        cpnt.text = pageContent.description;
+        cpnt.choiceList = pageContent.option;
+        cpnt.date = pageContent.date;
 
-        cpnt.score = {
-            ECO: this.state.ECO,
-            MIL: this.state.MIL,
-            CON: this.state.CON,
-            CUL: this.state.CUL,
-            SIN: this.state.SIN,
+        cpnt.chartOption.series[0].data[0] = this.state.CON;
+        cpnt.chartOption.series[0].data[1] = this.state.CUL;
+        cpnt.chartOption.series[0].data[2] = this.state.ECO;
+        cpnt.chartOption.series[0].data[3] = this.state.MIL;
+        cpnt.chartOption.series[0].data[4] = this.state.SIN * 10;
+
+        if (this.echart !== undefined) {
+            this.echart.setOption(cpnt.chartOption);
+        }
+        else {
+            console.log("FATAL ERROR: EChart object not found.");
         }
 
         if (pageContent.picture !== undefined && pageContent.picture !== "") {

@@ -11,9 +11,7 @@
       <div class="wrapper">
         <li class="top-li">
           <div class="date-div">Date:{{date}}</div>
-          <div
-            class="score-div"
-          >ECO:{{score.ECO}} MIL:{{score.MIL}} CON:{{score.CON}} CUL:{{score.CUL}} SIN:{{score.SIN}}</div>
+          <div class="score-div" ref="chart"></div>
         </li>
         <h1 ref="title">{{title}}</h1>
         <h4 ref="text" class="text">{{text}}</h4>
@@ -31,6 +29,8 @@
 </template>
 
 <script>
+import echarts from "echarts/lib/echarts";
+
 export default {
   name: "EventPage",
   data() {
@@ -41,22 +41,77 @@ export default {
       text: "test text test text xxxxxxxxxxxxxx",
       bg: require("../../static/images/Map_of_Xinjiang.jpg"),
       date: 1959.01,
-      score: {
-        ECO: 0,
-        MIL: 0,
-        CUL: 0,
-        CON: 0,
-        SIN: 0,
+      chartOption: {
+        tooltip: {
+          trigger: "axis",
+          axisPointer: {
+            type: "line", // 默认为直线，可选为：'line' | 'shadow'
+          },
+        },
+        legend: {
+          data: ["Scores"],
+        },
+        grid: {
+          left: "3%",
+          right: "8%",
+          bottom: "3%",
+          top: "8%",
+          containLabel: true,
+        },
+        xAxis: [
+          {
+            type: "value",
+          },
+        ],
+        yAxis: [
+          {
+            type: "category",
+            axisTick: {
+              show: false,
+            },
+            data: ["CON", "CUL", "ECO", "MIL", "SIN"],
+          },
+        ],
+        series: [
+          {
+            name: "Value",
+            type: "bar",
+            label: {
+              show: true,
+              position: "inside",
+            },
+            data: [0, 0, 10, -10, 50],
+            // use watcher to refresh chart
+          },
+        ],
       },
     };
   },
   mounted() {
     this.loadGame();
+    this.getEchartData();
   },
   methods: {
     loadGame() {
       this.$game.ge.loadGame(this);
       this.ShowPage = true;
+    },
+    getEchartData() {
+      const chart = this.$refs.chart;
+      if (chart) {
+        const myChart = this.$echarts.init(chart);
+        this.$game.ge.echart = myChart;
+        const option = this.$data.chartOption;
+        myChart.setOption(option);
+        window.addEventListener("resize", function () {
+          myChart.resize();
+        });
+      }
+      this.$on("hook:destroyed", () => {
+        window.removeEventListener("resize", function () {
+          myChart.resize();
+        });
+      });
     },
     go(marker) {
       let info = {
@@ -87,9 +142,8 @@ export default {
 .background {
   height: 100%;
   width: 100%;
-  padding-top: 20px;
-  padding-bottom: 0px;
   min-height: 500px;
+  padding: 0px;
 
   background: no-repeat center;
   background-size: contain;
@@ -99,8 +153,7 @@ export default {
 .wrapper {
   height: 100%;
   background-color: rgba(255, 255, 255, 0.7);
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding: 0px;
 }
 
 .top-li {
@@ -111,13 +164,19 @@ export default {
 }
 
 .date-div {
-  height: 100%;
+  display: block;
   float: left;
+  height: 100%;
+  font-size: 30px;
+  margin-left: 20px;
+  margin-top: 20px;
 }
 
 .score-div {
-  height: 100%;
+  display: block;
   float: right;
+  width: 300px;
+  height: 170px;
 }
 
 h1,
