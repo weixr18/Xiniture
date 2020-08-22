@@ -45,7 +45,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .welcome {
-  margin-bottom: 20%;
+  margin-bottom: 0%;
   margin-left: 20%;
   margin-right: 20%;
   border-color: #777777;

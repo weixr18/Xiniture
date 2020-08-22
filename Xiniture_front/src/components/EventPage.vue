@@ -1,27 +1,25 @@
 <template>
   <div class="game">
-    <div
-      class="background"
-      v-bind:style="{
-        backgroundImage:'url(' + bg + ')',
-        backgroundRepeat:'no-repeat',
-        backgroundSize:'cover'
-        }"
-    >
+    <div class="background" v-bind:style="{backgroundImage:'url(' + bg + ')',}">
       <div class="wrapper">
-        <li class="top-li">
-          <div class="date-div">Date:{{date}}</div>
-          <div class="score-div" ref="chart"></div>
-        </li>
-        <h1 ref="title">{{title}}</h1>
-        <h4 ref="text" class="text">{{text}}</h4>
-        <ul v-if="choiceList.length > 1">
-          <p v-for="item in choiceList" v-bind:key="item.marker">
-            <el-button @click="go(item.marker)" autofocus:False>{{item.text}}</el-button>
-          </p>
-        </ul>
-        <ul v-if="choiceList.length === 1">
-          <el-button type="primary" @click="go('A')">{{choiceList[0].text}}</el-button>
+        <ul class="wrapper-ul">
+          <li class="top-li">
+            <div class="date-div">Date:{{date}}</div>
+            <div class="title-div" ref="title">
+              <h1>{{title}}</h1>
+            </div>
+            <div class="score-div" ref="chart"></div>
+          </li>
+
+          <h4 ref="text" class="text">{{text}}</h4>
+          <ul v-if="choiceList.length > 1">
+            <p v-for="item in choiceList" v-bind:key="item.marker">
+              <el-button @click="go(item.marker)" autofocus:False>{{item.text}}</el-button>
+            </p>
+          </ul>
+          <ul v-if="choiceList.length === 1">
+            <el-button type="primary" @click="go('A')">{{choiceList[0].text}}</el-button>
+          </ul>
         </ul>
       </div>
     </div>
@@ -129,31 +127,43 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .game {
-  margin-top: 5%;
-  margin-bottom: 5%;
-  margin-left: 15%;
-  margin-right: 15%;
-  border-color: #777777;
-  border-right: 3px outset;
-  border-top: 3px outset;
-  border-left: 3px outset;
-  border-bottom: 3px outset;
+  margin-top: 0%;
+  margin-bottom: 0%;
+  margin-left: 0%;
+  margin-right: 0%;
+  height: max-content;
 }
+
 .background {
   height: 100%;
   width: 100%;
   min-height: 500px;
   padding: 0px;
+  margin: 0px;
 
-  background: no-repeat center;
-  background-size: contain;
-  position: relative;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  position: absolute;
 }
 
 .wrapper {
-  height: 100%;
+  height: auto;
+  width: auto;
   background-color: rgba(255, 255, 255, 0.7);
-  padding: 0 0 10px 0;
+  padding: 0px;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 40px;
+  margin-bottom: 100px;
+  border-right: 3px outset;
+  border-top: 3px outset;
+  border-left: 3px outset;
+  border-bottom: 3px outset;
+}
+.wrapper-ul {
+  margin: 0;
+  padding: 0 0 20px 0;
 }
 
 .top-li {
@@ -161,28 +171,49 @@ export default {
   text-align: center;
   margin: 0;
   padding: 0;
+  font-size: 0px;
 }
 
 .date-div {
-  display: block;
-  float: left;
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
   height: 100%;
   font-size: 30px;
   margin-left: 20px;
   margin-top: 20px;
 }
 
+.title-div {
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+  margin-top: 100px;
+  margin-left: 30px;
+  margin-right: 30px;
+  max-width: 600px;
+}
+
 .score-div {
-  display: block;
-  float: right;
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
   width: 300px;
   height: 170px;
 }
 
-h1,
+h1 {
+  font-weight: normal;
+  font-size: 40px;
+  max-width: 600px;
+  margin-top: 0%;
+  margin-bottom: 0%;
+}
+
 h2 {
   font-weight: normal;
   margin-top: 0%;
+  margin-bottom: 0%;
 }
 
 .text {

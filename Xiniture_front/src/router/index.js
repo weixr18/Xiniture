@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Welcome from '@/components/Welcome'
-import Notice from '@/components/Notice'
+import Notice from '@/components/NoticePage'
 import StatisticPage from '@/components/StatisticPage'
 import ResultPage from '@/components/ResultPage'
 import EventPage from '@/components/EventPage'
@@ -19,7 +19,7 @@ export default new Router({
     },
     {
       path: '/notice',
-      name: 'Notice',
+      name: 'NoticePage',
       component: Notice
     },
     {

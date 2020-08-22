@@ -1,5 +1,5 @@
 <template>
-  <div class="welcome">
+  <div class="statistics">
     <h1>Game Statistics</h1>
     <h2>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</h2>
     <el-button type="primary" @click="go">Back</el-button>
@@ -11,7 +11,7 @@ export default {
   name: "Statistics",
   data() {
     return {
-      msg: "hhhhhhhhhhhhhh"
+      msg: "hhhhhhhhhhhhhh",
     };
   },
   methods: {
@@ -19,17 +19,17 @@ export default {
       let info = {
         thisPage: "Statistics",
         newPost: true,
-        target: "result"
+        target: "result",
       };
       this.$game.ge.buttonClick(this, info);
-    }
-  }
+    },
+  },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-welcome {
+.statistics {
   margin-top: 20%;
   margin-bottom: 20%;
   margin-left: 30%;
