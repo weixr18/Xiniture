@@ -1,0 +1,10 @@
+# http = 127.0.0.1:3309
+socket = 127.0.0.1:3309
+chdir = /home/python/Desktop/my_pro 
+wsgi-file = my_pro/wsgi.py
+master = True
+processes = 2
+daemonize = wsgi.log
+threads = 4
+vacuum = true
+pidfile = uwsgi.pid
