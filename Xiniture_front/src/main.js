@@ -3,7 +3,7 @@
 import Game from '@/components/Game';
 import './assets/fonts/font.css'
 
-import Vue from 'vue'
+//import Vue from 'vue'
 import App from './App'
 import router from './router'
 
@@ -16,7 +16,7 @@ Vue.use(Select)
 Vue.use(Option)
 Vue.use(Progress)
 
-let echarts = require('echarts/lib/echarts')
+//let echarts = require('echarts/lib/echarts')
 // 引入折线图等组件
 require('echarts/lib/chart/line')
 require('echarts/lib/chart/bar')
