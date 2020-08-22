@@ -45,7 +45,6 @@ export default {
   name: "Info",
   data() {
     return {
-      msg: "hhhhhhhhhhhhhh",
       ages: [
         { value: "<18", lable: "<18" },
         { value: 18, lable: 18 },
@@ -382,7 +381,7 @@ export default {
       let info = {
         thisPage: "info",
         newPost: true,
-        target: "event",
+        target: "loading",
         userID: 0,
         ageValue: this.$data.ageValue,
         countryValue: this.$data.countryValue,

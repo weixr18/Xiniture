@@ -39,7 +39,7 @@ export default {
       choiceList: [],
       title: "EVENT",
       text: "test text test text xxxxxxxxxxxxxx",
-      bg: require("../../static/images/Map_of_Xinjiang.jpg"),
+      bg: require("../assets/images/Map_of_Xinjiang.jpg"),
       date: 1959.01,
       chartOption: {
         tooltip: {
@@ -153,7 +153,7 @@ export default {
 .wrapper {
   height: 100%;
   background-color: rgba(255, 255, 255, 0.7);
-  padding: 0px;
+  padding: 0 0 10px 0;
 }
 
 .top-li {

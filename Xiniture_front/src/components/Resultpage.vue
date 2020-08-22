@@ -44,7 +44,7 @@ export default {
         SIN: this.$game.ge.state.SIN * 10,
       },
       description: "Game over. Thanks for playing.",
-      bg: require("../../static/images/Riot1.jpg"),
+      bg: require("../assets/images/Riot1.jpg"),
     };
   },
   methods: {

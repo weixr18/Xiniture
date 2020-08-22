@@ -24,7 +24,7 @@ export default {
   name: "Welcome",
   data() {
     return {
-      bg: require("../../static/images/Riot1.jpg"),
+      bg: require("../assets/images/Riot1.jpg"),
       // require 的初始路径就是vue文件所在路径
     };
   },

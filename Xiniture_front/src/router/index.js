@@ -6,6 +6,8 @@ import StatisticPage from '@/components/StatisticPage'
 import ResultPage from '@/components/ResultPage'
 import EventPage from '@/components/EventPage'
 import InfoPage from '@/components/InfoPage'
+import LoadingPage from '@/components/LoadingPage'
+
 Vue.use(Router)
 
 export default new Router({
@@ -39,6 +41,11 @@ export default new Router({
       path: '/info',
       name: 'InfoPage',
       component: InfoPage
+    },
+    {
+      path: '/loading',
+      name: "LoadingPage",
+      component: LoadingPage
     }
   ]
 })

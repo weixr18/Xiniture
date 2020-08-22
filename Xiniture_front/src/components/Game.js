@@ -113,8 +113,8 @@ function GameEngine() {
     this.buttonClick = function (cpnt, info) {
         //点击事件处理
         if (info.newPost && info.target !== undefined) {
-            // URL跳转
-            if (info.thisPage === "info" && info.target === "event") {
+            // URL跳转info
+            if (info.thisPage === "info" && info.target === "loading") {
                 //信息上传
                 if (this.logTime === undefined) {
                     let time = new Date();
@@ -137,7 +137,9 @@ function GameEngine() {
                         console.log("ERROR: Could not get user ID!");
                     }
                 });
-
+                cpnt.$router.push("/" + info.target);
+            }
+            else if (info.thisPage === "loading" && info.target === "event") {
                 cpnt.$router.push("/" + info.target);
             }
             else if (info.thisPage === "result" && info.target === "") {
@@ -160,6 +162,7 @@ function GameEngine() {
                 cpnt.$router.push("/" + info.target);
             }
             else {
+                // 其他情况
                 cpnt.$router.push("/" + info.target);
             }
 
@@ -435,10 +438,10 @@ function GameEngine() {
         }
 
         if (pageContent.picture !== undefined && pageContent.picture !== "") {
-            cpnt.bg = require("../../static/images/" + pageContent.picture);
+            cpnt.bg = require("../assets/images/" + pageContent.picture);
         }
         else if (pageContent.picture === undefined || pageContent.picture === "") {
-            cpnt.bg = require("../../static/images/" + "blank.jpg");
+            cpnt.bg = require("../assets/images/" + "blank.jpg");
         }
     }
 }

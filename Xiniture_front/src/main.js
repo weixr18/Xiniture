@@ -10,10 +10,11 @@ import router from './router'
 import VueResource from 'vue-resource';
 Vue.use(VueResource)
 
-import { Button, Select, Option } from 'element-ui'
+import { Button, Select, Option, Progress } from 'element-ui'
 Vue.use(Button)
 Vue.use(Select)
 Vue.use(Option)
+Vue.use(Progress)
 
 let echarts = require('echarts/lib/echarts')
 // 引入折线图等组件
